@@ -362,7 +362,8 @@
     font-family: 'Playfair Display', serif;
     font-size: 1rem; color: var(--ink); margin-bottom: 0.2rem;
   }
-  .edu-school { font-size: 0.82rem; color: var(--muted); }
+  .edu-school { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.4rem; }
+  .edu-courses { font-size: 0.72rem; color: var(--green); letter-spacing: 0.02em; }
 
   /* FOOTER */
   footer {
@@ -546,6 +547,16 @@
   .hero-left > *:nth-child(4) { animation-delay: 0.4s; }
   .hero-left > *:nth-child(5) { animation-delay: 0.5s; }
 
+  .hero-avatar-wrap {
+    display: flex; justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  .hero-avatar {
+    width: 140px; height: 140px;
+    border-radius: 50%; object-fit: cover; object-position: top;
+    border: 3px solid rgba(200,217,196,0.3);
+  }
+
   /* WCAG NOTE */
   .wcag-badge {
     display: inline-flex; align-items: center; gap: 0.4rem;
@@ -585,6 +596,9 @@
   </div>
   <div class="hero-right">
     <div class="hero-right-decoration"></div>
+    <div class="hero-avatar-wrap">
+      <img src="images/img-avatar.png" alt="Flora He" class="hero-avatar" />
+    </div>
     <div class="hero-right-label">Channel · Content Platform</div>
     <div class="hero-stats">
       <div class="hero-stat-box">
@@ -722,7 +736,7 @@
       <div class="project-card-body">
         <div class="project-card-meta-row">
           <span class="project-tag">Web Design</span>
-          <span class="project-year">2026</span>
+          
         </div>
         <h3 class="project-title">Personal Portfolio Website</h3>
         <p class="project-desc">Designed and built from scratch using HTML and CSS. Fully WCAG 2.1 AA compliant — semantic structure, colour contrast, keyboard navigation, and proper alt text throughout.</p>
@@ -744,7 +758,7 @@
       <div class="project-card-body">
         <div class="project-card-meta-row">
           <span class="project-tag">Development</span>
-          <span class="project-year">2026</span>
+          
         </div>
         <h3 class="project-title">Job Search Automation Dashboard</h3>
         <p class="project-desc">Built with Python + Playwright to automatically scan SEEK and Indeed every hour, filter listings, and store results as JSON. A live local dashboard shows all tracked jobs with status and one-click apply.</p>
@@ -766,7 +780,7 @@
       <div class="project-card-body">
         <div class="project-card-meta-row">
           <span class="project-tag">Client Project</span>
-          <span class="project-year">2018</span>
+          
         </div>
         <h3 class="project-title">Suncorp Travel Insurance — Web App</h3>
         <p class="project-desc">University–industry collaboration with Suncorp. Built a full multi-step travel insurance quote and purchase flow — covering trip information, medical assessment, policy selection, customer details and payment. Includes conditional logic, form validation, and a dynamic quote generator.</p>
@@ -790,7 +804,7 @@
       <div class="project-card-body">
         <div class="project-card-meta-row">
           <span class="project-tag">Full-Stack Web App</span>
-          <span class="project-year">2021</span>
+          
         </div>
         <h3 class="project-title">BeSafe — Blog & Community Platform</h3>
         <p class="project-desc">Built a full-stack web application with Node.js, Express, and EJS templating. Features include user authentication (login/register), a dynamic blog with pagination, responsive mobile navigation, and a multi-page layout. Designed and built for both desktop and mobile.</p>
@@ -822,7 +836,7 @@
       <div class="project-card-body">
         <div class="project-card-meta-row">
           <span class="project-tag">UI Concept</span>
-          <span class="project-year">2025</span>
+          
         </div>
         <h3 class="project-title">Skincare Brand Homepage</h3>
         <p class="project-desc">Dark luxury homepage concept exploring contrast, editorial typography, and product hierarchy. Midnight palette with gold accents designed for a premium skincare brand.</p>
@@ -851,7 +865,7 @@
       <div class="project-card-body">
         <div class="project-card-meta-row">
           <span class="project-tag">UI Concept</span>
-          <span class="project-year">2024</span>
+          
         </div>
         <h3 class="project-title">E-commerce Product Page</h3>
         <p class="project-desc">Fashion e-commerce product detail page with gallery, size selection, and cart flow. Bold cobalt palette with strong typographic hierarchy for a premium retail feel.</p>
@@ -936,10 +950,12 @@
     <div class="edu-item">
       <div class="edu-degree">Master of Engineering Management</div>
       <div class="edu-school">University of Technology Sydney · 2019–2020</div>
+      <div class="edu-courses">Risk Management · Project Management · Operations Management</div>
     </div>
     <div class="edu-item">
       <div class="edu-degree">Bachelor of Information Technology</div>
       <div class="edu-school">Macquarie University · 2016–2019</div>
+      <div class="edu-courses">Web Development · Database Systems · Software Engineering · Data Structures</div>
     </div>
   </div>
 </div>
