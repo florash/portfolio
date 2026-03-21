@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flora He — Digital Content Creator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg:      #f0ede6;
+  --bg-card: #ffffff;
+  --bg-card2:#f5f3ee;
+  --ink:     #1c1c1a;
+  --mid:     #6b6b67;
+  --muted:   #9e9d99;
+  --faint:   #c4c2bc;
+  --rule:    #e2dfd8;
+  --tag-bg:  #1c1c1a;
+  --tag-txt: #f0ede6;
+  --sans:    'Instrument Sans', sans-serif;
+  --radius:  16px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  font-weight: 400;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 52px;
+}
+.nav-logo { font-size: 15px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--ink); }
+
+.side { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; align-items: center; gap: 5px; pointer-events: none; }
+.side-name { writing-mode: vertical-rl; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--faint); font-weight: 500; }
+.side-rule { width: 0.5px; height: 16px; background: var(--rule); display: block; }
+.side-page { writing-mode: vertical-rl; font-size: 9px; letter-spacing: 0.08em; color: var(--faint); }
+
+section { position: relative; overflow: hidden; }
+.inner { max-width: 1200px; margin: 0 auto; padding: 96px 52px; }
+.h-rule { width: 100%; height: 0.5px; background: var(--rule); }
+
+.ghost-wrap { position: relative; margin-bottom: 52px; }
+.ghost { font-size: clamp(64px,9vw,120px); font-weight: 600; color: var(--ink); opacity: 0.06; position: absolute; top: 0; left: 0; line-height: 1; white-space: nowrap; pointer-events: none; user-select: none; letter-spacing: -0.03em; }
+.section-heading { font-size: clamp(36px,5vw,60px); font-weight: 600; color: var(--ink); line-height: 1; letter-spacing: -0.02em; padding-top: 28px; position: relative; }
+
+.tag-dark { display: inline-block; background: var(--tag-bg); color: var(--tag-txt); font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 999px; }
+.tag-light { display: inline-block; background: var(--bg-card2); color: var(--mid); font-size: 12px; padding: 6px 14px; border-radius: 999px; border: 0.5px solid var(--rule); }
+
+/* HERO */
+#hero { min-height: 100vh; background: var(--bg); }
+#hero .inner { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding-top: 0; padding-bottom: 0; align-items: stretch; }
+
+.hero-left { display: flex; flex-direction: column; justify-content: space-between; padding: 120px 52px 56px 0; border-right: 0.5px solid var(--rule); }
+.hero-eyebrow { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; font-weight: 500; }
+.hero-left h1 { font-size: clamp(52px,7vw,84px); font-weight: 600; line-height: 0.95; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 32px; }
+.hero-left h1 em { font-style: italic; font-weight: 400; color: var(--muted); }
+.hero-bio { font-size: 14px; line-height: 1.8; color: var(--mid); max-width: 380px; }
+.hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+
+.btn-fill { font-family: var(--sans); font-size: 12px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; background: var(--ink); color: var(--bg); border: none; padding: 12px 24px; border-radius: 999px; text-decoration: none; transition: opacity 0.2s; }
+.btn-fill:hover { opacity: 0.75; }
+.btn-outline { font-family: var(--sans); font-size: 12px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; background: transparent; color: var(--mid); border: 0.5px solid var(--rule); padding: 12px 24px; border-radius: 999px; text-decoration: none; transition: all 0.2s; }
+.btn-outline:hover { border-color: var(--ink); color: var(--ink); }
+
+.hero-right { display: flex; flex-direction: column; justify-content: space-between; padding: 120px 0 56px 52px; }
+.about-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 28px; font-weight: 500; }
+.info-rows { display: flex; flex-direction: column; }
+.info-row { padding: 14px 0; border-bottom: 0.5px solid var(--rule); }
+.info-row:first-child { border-top: 0.5px solid var(--rule); }
+.info-row .lbl { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); margin-bottom: 3px; font-weight: 500; }
+.info-row .val { font-size: 14px; color: var(--ink); }
+.dot-green { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #6bba6b; margin-left: 6px; vertical-align: middle; }
+.hero-stats { display: flex; gap: 36px; }
+.stat-num { font-size: 30px; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; line-height: 1; margin-bottom: 4px; }
+.stat-lbl { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); font-weight: 500; }
+
+/* PROJECTS */
+#projects { background: var(--bg); }
+.projects-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.project-card { background: var(--bg-card); border-radius: var(--radius); overflow: hidden; text-decoration: none; color: inherit; transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column; }
+.project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+.card-color { width: 100%; height: 180px; position: relative; border-radius: var(--radius) var(--radius) 0 0; overflow: hidden; background: var(--bg-card2); }
+.card-color img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.project-card:hover .card-color img { transform: scale(1.04); }
+.card-cat { position: absolute; top: 16px; left: 16px; font-size: 10px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink); font-weight: 500; background: rgba(240,237,230,0.88); padding: 4px 10px; border-radius: 999px; }
+.card-body { padding: 22px 24px 24px; flex: 1; display: flex; flex-direction: column; }
+.card-title { font-size: 22px; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 10px; line-height: 1.1; }
+.card-desc { font-size: 13px; color: var(--mid); line-height: 1.8; flex: 1; margin-bottom: 20px; }
+.card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; gap: 12px; }
+.card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.card-link { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; white-space: nowrap; font-weight: 500; transition: color 0.2s; flex-shrink: 0; display: flex; align-items: center; gap: 6px; }
+.card-link:hover { color: var(--ink); }
+
+/* SKILLS */
+#skills { background: var(--bg); }
+.skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border-top: 0.5px solid var(--rule); }
+.skill-col { padding: 36px 40px 36px 0; border-right: 0.5px solid var(--rule); }
+.skill-col:last-child { border-right: none; padding-right: 0; padding-left: 40px; }
+.skill-col:nth-child(2) { padding-left: 40px; }
+.skill-col-title { font-size: 18px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; margin-bottom: 20px; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* RESUME */
+#resume { background: var(--bg-card2); }
+.resume-grid { display: grid; grid-template-columns: 300px 1fr; gap: 72px; align-items: start; }
+.resume-col-heading { font-size: clamp(28px,4vw,44px); font-weight: 600; letter-spacing: -0.02em; color: var(--ink); line-height: 1; margin-bottom: 36px; padding-bottom: 16px; border-bottom: 0.5px solid var(--rule); }
+.edu-item { display: flex; gap: 12px; margin-bottom: 28px; }
+.edu-dot { color: var(--faint); font-size: 10px; margin-top: 4px; flex-shrink: 0; }
+.edu-school { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.edu-year { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+.edu-desc { font-size: 12px; color: var(--mid); line-height: 1.7; }
+.skill-group { margin-bottom: 20px; }
+.skill-group-lbl { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); margin-bottom: 10px; font-weight: 500; }
+.tags-wrap { display: flex; flex-wrap: wrap; gap: 7px; }
+.tag-sm-dark { display: inline-block; background: var(--tag-bg); color: var(--tag-txt); font-size: 11px; font-weight: 500; padding: 4px 12px; border-radius: 999px; }
+.tag-sm-light { display: inline-block; background: transparent; color: var(--mid); font-size: 11px; padding: 4px 12px; border-radius: 999px; border: 0.5px solid var(--rule); }
+.exp-item { padding: 22px 0; border-bottom: 0.5px solid var(--rule); }
+.exp-item:last-child { border-bottom: none; }
+.exp-header { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 3px; }
+.exp-role { font-size: 15px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+.exp-year { font-size: 11px; color: var(--muted); white-space: nowrap; }
+.exp-org { font-size: 12px; color: var(--muted); margin-bottom: 10px; font-style: italic; }
+.exp-desc { font-size: 13px; line-height: 1.8; color: var(--mid); }
+
+/* CONTACT */
+#contact { background: var(--bg); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: start; }
+.contact-left { padding-right: 72px; border-right: 0.5px solid var(--rule); }
+.contact-heading { font-size: clamp(28px,4vw,52px); font-weight: 600; letter-spacing: -0.02em; color: var(--ink); line-height: 1.05; margin-bottom: 24px; }
+.contact-heading em { font-style: italic; font-weight: 400; color: var(--muted); }
+.contact-body { font-size: 14px; line-height: 1.8; color: var(--mid); max-width: 380px; margin-bottom: 36px; }
+.contact-links { display: flex; flex-direction: column; }
+.contact-link { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 0.5px solid var(--rule); text-decoration: none; transition: padding-left 0.2s; }
+.contact-link:first-child { border-top: 0.5px solid var(--rule); }
+.contact-link:hover { padding-left: 8px; }
+.cl-lbl { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); font-weight: 500; }
+.cl-val { font-size: 14px; color: var(--ink); transition: color 0.2s; }
+.contact-link:hover .cl-val { color: var(--muted); }
+.contact-right { padding-left: 72px; }
+.contact-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 40px; }
+.stat-card { background: var(--bg-card); border-radius: var(--radius); padding: 20px; }
+.stat-card .num { font-size: 28px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); line-height: 1; margin-bottom: 5px; }
+.stat-card .lbl { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); font-weight: 500; }
+.contact-edu-heading { font-size: 18px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 0.5px solid var(--rule); }
+
+footer { background: var(--bg-card2); border-top: 0.5px solid var(--rule); padding: 24px 52px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--faint); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; }
+
+@media (max-width: 960px) {
+  nav { padding: 20px 24px; }
+  .inner { padding: 80px 24px; }
+  .side { display: none; }
+  #hero .inner { grid-template-columns: 1fr; min-height: auto; padding-top: 100px; padding-bottom: 60px; }
+  .hero-left { border-right: none; padding-right: 0; border-bottom: 0.5px solid var(--rule); padding-bottom: 48px; }
+  .hero-right { padding-left: 0; padding-top: 48px; padding-bottom: 0; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .skill-col { border-right: none; padding: 24px 0; border-bottom: 0.5px solid var(--rule); }
+  .skill-col:last-child { padding-left: 0; }
+  .skill-col:nth-child(2) { padding-left: 0; }
+  .resume-grid { grid-template-columns: 1fr; gap: 48px; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-left { border-right: none; padding-right: 0; border-bottom: 0.5px solid var(--rule); padding-bottom: 56px; margin-bottom: 56px; }
+  .contact-right { padding-left: 0; }
+  footer { flex-direction: column; gap: 8px; text-align: center; padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Flora He</span>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#resume">Resume</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="side"><span class="side-name">Intro</span><span class="side-rule"></span><span class="side-page">P / 01</span></div>
+  <div class="inner">
+    <div class="hero-left">
+      <div>
+        <p class="hero-eyebrow">Portfolio · 2026</p>
+        <h1>Flora<br><em>He.</em></h1>
+        <p class="hero-bio">Digital content professional with experience in web content publishing, CMS management, SEO, and accessibility-focused design. I turn complex information into clear, engaging digital experiences.</p>
+        <img src="images/img-avatar.png" alt="Flora He" style="width:140px;height:140px;border-radius:50%;object-fit:cover;object-position:top center;background:var(--bg-card2);display:block;margin-top:32px;">
+      </div>
+      <div class="hero-actions">
+        <a href="FloraHe_Resume_portfolio.pdf" class="btn-fill" download>↓ Download CV</a>
+        <a href="#projects" class="btn-outline">View Work →</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div>
+        <p class="about-label">About</p>
+        <div class="info-rows">
+          <div class="info-row"><p class="lbl">Location</p><p class="val">Canberra, AU</p></div>
+          <div class="info-row"><p class="lbl">Focus</p><p class="val">Web Content · SEO · Accessibility</p></div>
+          <div class="info-row"><p class="lbl">Stack</p><p class="val">HTML/CSS · React · Python · WordPress</p></div>
+          <div class="info-row"><p class="lbl">Compliance</p><p class="val">WCAG 2.1 AA</p></div>
+          <div class="info-row"><p class="lbl">Availability</p><p class="val">Open to opportunities <span class="dot-green"></span></p></div>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div><p class="stat-num">5K+</p><p class="stat-lbl">Followers</p></div>
+        <div><p class="stat-num">500K+</p><p class="stat-lbl">Total Views</p></div>
+        <div><p class="stat-num">39K+</p><p class="stat-lbl">Likes & Saves</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="h-rule"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="side"><span class="side-name">Projects</span><span class="side-rule"></span><span class="side-page">P / 02</span></div>
+  <div class="inner">
+    <div class="ghost-wrap">
+      <span class="ghost">Projects.</span>
+      <h2 class="section-heading">Projects.</h2>
+    </div>
+    <div class="projects-grid">
+
+      <a class="project-card" href="https://stockwise-pi.vercel.app" target="_blank">
+        <div class="card-color" style="background:#dde4dc;">
+          <img src="images/img-stockwise-desktop.png" alt="Stockwise">
+          <span class="card-cat">Full–Stack · AI</span>
+        </div>
+        <div class="card-body">
+          <p class="card-title">Stockwise</p>
+          <p class="card-desc">Stock analysis platform with Claude API, React + FastAPI backend, real-time US & ASX data, and bilingual support.</p>
+          <div class="card-footer">
+            <div class="card-tags"><span class="tag-dark">React</span><span class="tag-dark">FastAPI</span><span class="tag-light">Claude API</span></div>
+            <span class="card-link">View Live →</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://florash.github.io/rainyhour/" target="_blank">
+        <div class="card-color" style="background:#d8e2e8;">
+          <img src="images/img-rainyhour-desktop.png" alt="Rainy Hour">
+          <span class="card-cat">Creative Dev</span>
+        </div>
+        <div class="card-body">
+          <p class="card-title">Rainy Hour</p>
+          <p class="card-desc">Ambient soundscape app with Canvas rain animation, layered Web Audio API, and field recordings from Australia.</p>
+          <div class="card-footer">
+            <div class="card-tags"><span class="tag-dark">Canvas API</span><span class="tag-light">Web Audio</span></div>
+            <span class="card-link">View Live →</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://florash.github.io/i-love-wallpaper/" target="_blank">
+        <div class="card-color" style="background:#e8e0ec;">
+          <img src="images/img-wallpaper-desktop.png" alt="I Love Wallpaper">
+          <span class="card-cat">Creative Dev</span>
+        </div>
+        <div class="card-body">
+          <p class="card-title">I Love Wallpaper</p>
+          <p class="card-desc">Mobile wallpaper gallery with paired Lock + Home Screen sets, category filtering, and one-tap download.</p>
+          <div class="card-footer">
+            <div class="card-tags"><span class="tag-dark">JavaScript</span><span class="tag-light">Mobile First</span></div>
+            <span class="card-link">View Live →</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="project-card" href="#" style="cursor:default;">
+        <div class="card-color" style="background:#ece0d4;">
+          <img src="images/img-content1.jpg" alt="Fashion Platform">
+          <span class="card-cat">Content Strategy</span>
+        </div>
+        <div class="card-body">
+          <p class="card-title">Fashion & Lifestyle Platform</p>
+          <p class="card-desc">Grew lifestyle account from zero to 5K+ followers and 500K+ views through data-driven content strategy.</p>
+          <div class="card-footer">
+            <div class="card-tags"><span class="tag-dark">Content</span><span class="tag-light">Analytics</span><span class="tag-light">SEO</span></div>
+          </div>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://animal-personality-quiz.netlify.app/" target="_blank">
+        <div class="card-color" style="background:#dceade;">
+          <img src="images/img-quiz-desktop.png" alt="Animal Personality Quiz" style="display:block;">
+          <span class="card-cat">Interactive · Personal</span>
+        </div>
+        <div class="card-body">
+          <p class="card-title">Animal Personality Quiz</p>
+          <p class="card-desc">Interactive quiz with 15-result weighted scoring, Canvas share card generator, and custom illustrated avatars.</p>
+          <div class="card-footer">
+            <div class="card-tags"><span class="tag-dark">JavaScript</span><span class="tag-light">Canvas</span><span class="tag-light">Netlify</span></div>
+            <span class="card-link">View Live →</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="project-card" href="#" style="cursor:default;">
+        <div class="card-color" style="background:#dce0e8;">
+          <img src="images/img-jobbot.png" alt="Job Search Automation">
+          <span class="card-cat">Development</span>
+        </div>
+        <div class="card-body">
+          <p class="card-title">Job Search Automation</p>
+          <p class="card-desc">Python + Playwright tool scanning SEEK and Indeed hourly. Live dashboard with status filtering and one-click apply.</p>
+          <div class="card-footer">
+            <div class="card-tags"><span class="tag-dark">Python</span><span class="tag-light">Playwright</span></div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<div class="h-rule"></div>
+
+<!-- KEY SKILLS -->
+<section id="skills">
+  <div class="side"><span class="side-name">Skills</span><span class="side-rule"></span><span class="side-page">P / 03</span></div>
+  <div class="inner">
+    <div class="ghost-wrap">
+      <span class="ghost">Key Skills.</span>
+      <h2 class="section-heading">Key Skills.</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-col">
+        <p class="skill-col-title">Web & Digital</p>
+        <div class="skill-tags">
+          <span class="tag-dark">WordPress</span>
+          <span class="tag-dark">HTML / CSS</span>
+          <span class="tag-light">SharePoint</span>
+          <span class="tag-light">SEO</span>
+          <span class="tag-light">Web Publishing</span>
+          <span class="tag-light">Content Editing</span>
+          <span class="tag-light">Digital Asset Mgmt</span>
+        </div>
+      </div>
+      <div class="skill-col">
+        <p class="skill-col-title">Development</p>
+        <div class="skill-tags">
+          <span class="tag-dark">React</span>
+          <span class="tag-dark">Python</span>
+          <span class="tag-light">FastAPI</span>
+          <span class="tag-light">Canvas API</span>
+          <span class="tag-light">JavaScript</span>
+          <span class="tag-light">GitHub</span>
+          <span class="tag-light">Netlify / Vercel</span>
+        </div>
+      </div>
+      <div class="skill-col">
+        <p class="skill-col-title">Tools & Standards</p>
+        <div class="skill-tags">
+          <span class="tag-dark">WCAG 2.1 AA</span>
+          <span class="tag-dark">Claude API</span>
+          <span class="tag-light">Google Analytics</span>
+          <span class="tag-light">Adobe Suite</span>
+          <span class="tag-light">Canva</span>
+          <span class="tag-light">MS Office</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="h-rule"></div>
+
+<!-- RESUME -->
+<section id="resume">
+  <div class="side"><span class="side-name">Resume</span><span class="side-rule"></span><span class="side-page">P / 04</span></div>
+  <div class="inner">
+    <div class="ghost-wrap">
+      <span class="ghost">Resume.</span>
+      <h2 class="section-heading" style="margin-bottom:52px;">Resume.</h2>
+    </div>
+    <div class="resume-grid">
+      <div>
+        <h3 class="resume-col-heading">Education</h3>
+        <div class="edu-item">
+          <span class="edu-dot">○</span>
+          <div>
+            <p class="edu-school">University of Technology Sydney</p>
+            <p class="edu-year">2019 – 2020</p>
+            <p class="edu-desc">Master of Engineering Management<br>Risk · Project · Operations Management</p>
+          </div>
+        </div>
+        <div class="edu-item">
+          <span class="edu-dot">○</span>
+          <div>
+            <p class="edu-school">Macquarie University</p>
+            <p class="edu-year">2016 – 2019</p>
+            <p class="edu-desc">Bachelor of Information Technology<br>Web Dev · Databases · Software Engineering</p>
+          </div>
+        </div>
+        <div style="margin-top:40px;">
+          <h3 class="resume-col-heading" style="font-size:24px;">Skills</h3>
+          <div class="skill-group">
+            <p class="skill-group-lbl">Web & Content</p>
+            <div class="tags-wrap">
+              <span class="tag-sm-dark">WordPress CMS</span>
+              <span class="tag-sm-dark">HTML / CSS</span>
+              <span class="tag-sm-light">SharePoint</span>
+              <span class="tag-sm-light">SEO</span>
+              <span class="tag-sm-light">Web Publishing</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <p class="skill-group-lbl">Accessibility</p>
+            <div class="tags-wrap">
+              <span class="tag-sm-dark">WCAG 2.1 AA</span>
+              <span class="tag-sm-light">Google Analytics</span>
+              <span class="tag-sm-light">Semantic HTML</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <p class="skill-group-lbl">Development</p>
+            <div class="tags-wrap">
+              <span class="tag-sm-dark">React</span>
+              <span class="tag-sm-dark">Python</span>
+              <span class="tag-sm-light">FastAPI</span>
+              <span class="tag-sm-light">JavaScript</span>
+              <span class="tag-sm-light">GitHub</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 class="resume-col-heading">Experience</h3>
+        <div class="exp-item">
+          <div class="exp-header"><p class="exp-role">Digital Content Creator</p><span class="exp-year">2023 — Present</span></div>
+          <p class="exp-org">Self-Employed</p>
+          <p class="exp-desc">Created and maintained website content ensuring clarity, accuracy, and accessibility. Applied SEO practices including keyword research and optimisation. Ensured WCAG compliance and analysed Google Analytics to inform content strategy.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-header"><p class="exp-role">Web Developer – Project Support</p><span class="exp-year">2021 — 2023</span></div>
+          <p class="exp-org">K2L, Canberra</p>
+          <p class="exp-desc">Assisted with website and digital platform updates. Applied HTML and CSS for content updates, used SharePoint to organise documentation. Developed user guides and procedural documentation to support staff capability.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-header"><p class="exp-role">Project Support Officer</p><span class="exp-year">2021</span></div>
+          <p class="exp-org">ACS Program</p>
+          <p class="exp-desc">Coordinated project documentation and maintained records aligned with reporting requirements. Prepared training documentation to support system adoption.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-header"><p class="exp-role">Graduate Project Support</p><span class="exp-year">2018</span></div>
+          <p class="exp-org">Macquarie University & Suncorp</p>
+          <p class="exp-desc">Provided documentation and usability testing support within a university–industry digital project on travel insurance web application design.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="h-rule"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="side"><span class="side-name">Contact</span><span class="side-rule"></span><span class="side-page">P / 05</span></div>
+  <div class="inner">
+    <div class="ghost-wrap">
+      <span class="ghost">Contact.</span>
+      <h2 class="section-heading" style="margin-bottom:52px;">Contact.</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-left">
+        <h3 class="contact-heading">Open to <em>opportunities</em><br>across Australia.</h3>
+        <p class="contact-body">Available for Web Content, Digital Communications, and Creative Digital roles. I'd love to hear about opportunities where I can bring clarity, accessibility, and strategy to digital work.</p>
+        <div class="contact-links">
+          <a href="mailto:flora.shuohe@gmail.com" class="contact-link">
+            <span class="cl-lbl">Email</span><span class="cl-val">flora.shuohe@gmail.com →</span>
+          </a>
+          <a href="https://florash.github.io/flora/" target="_blank" class="contact-link">
+            <span class="cl-lbl">Website</span><span class="cl-val">florash.github.io/flora →</span>
+          </a>
+          <a href="FloraHe_Resume_portfolio.pdf" class="contact-link" download>
+            <span class="cl-lbl">CV</span><span class="cl-val">Download PDF →</span>
+          </a>
+        </div>
+      </div>
+      <div class="contact-right">
+        <div class="contact-stats">
+          <div class="stat-card"><p class="num">5K+</p><p class="lbl">Followers</p></div>
+          <div class="stat-card"><p class="num">500K+</p><p class="lbl">Total Views</p></div>
+          <div class="stat-card"><p class="num">39K+</p><p class="lbl">Likes & Saves</p></div>
+          <div class="stat-card"><p class="num">WCAG</p><p class="lbl">AA Compliant</p></div>
+        </div>
+        <h3 class="contact-edu-heading">Education</h3>
+        <div class="edu-item">
+          <span class="edu-dot">○</span>
+          <div>
+            <p class="edu-school">University of Technology Sydney</p>
+            <p class="edu-year">Master of Engineering Management · 2019–2020</p>
+          </div>
+        </div>
+        <div class="edu-item" style="margin-bottom:0;">
+          <span class="edu-dot">○</span>
+          <div>
+            <p class="edu-school">Macquarie University</p>
+            <p class="edu-year">Bachelor of Information Technology · 2016–2019</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Flora He</span>
+  <span>© 2026 · Canberra, AU · WCAG 2.1 AA</span>
+  <span>flora.shuohe@gmail.com</span>
+</footer>
+
+</body>
+</html>
