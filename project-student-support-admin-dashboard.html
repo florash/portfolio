@@ -9,6 +9,22 @@
 <link rel="stylesheet" href="case-study.css">
 <style>
 .hero-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
+.hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:20px; }
+.hero-link {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 10px 16px;
+  border: 0.5px solid var(--rule);
+  background: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.hero-link:hover { border-color: var(--ink); }
 .hero-meta { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:12px; margin-top:26px; }
 .meta-card, .feature-card, .outcome-card, .tool-card {
   background: var(--surface);
@@ -110,6 +126,9 @@
       <span class="tag-light">Workflow tracking</span>
       <span class="tag-light">Internal notes</span>
       <span class="tag-light">Activity history</span>
+    </div>
+    <div class="hero-actions">
+      <a class="hero-link" href="https://florash.github.io/student-support-admin-dashboard/" target="_blank" rel="noopener noreferrer">View Live Project</a>
     </div>
     <div class="hero-image">
       <img src="student-support-admin-dashboard-hero.png" alt="Student Support Admin Dashboard showing the request register and case details workspace">
