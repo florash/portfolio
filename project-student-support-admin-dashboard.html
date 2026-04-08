@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Support Admin Dashboard Case Study | Flora He</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="case-study.css">
+<style>
+.hero-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
+.hero-meta { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:12px; margin-top:26px; }
+.meta-card, .feature-card, .outcome-card, .tool-card {
+  background: var(--surface);
+  border: 0.5px solid var(--rule);
+  padding: 18px;
+}
+.meta-card strong, .feature-card h3, .outcome-card h3, .tool-card h3 {
+  display:block;
+  margin-bottom:8px;
+  font-size:15px;
+  font-weight:600;
+  color: var(--ink);
+}
+.meta-card p, .feature-card p, .outcome-card p, .tool-card p { margin:0; font-size:13px; line-height:1.8; color:var(--mid); }
+.feature-grid, .outcomes-grid { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:14px; margin-top:18px; }
+.feature-card figure { margin: 14px 0 0; border: 0.5px solid var(--rule); background: var(--soft); overflow:hidden; }
+.feature-card img { display:block; width:100%; height:auto; }
+.supporting-grid { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:16px; margin-top:18px; }
+.supporting-card {
+  background: var(--surface);
+  border: 0.5px solid var(--rule);
+  padding: 18px;
+}
+.supporting-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.supporting-card p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--mid);
+}
+.supporting-card figure {
+  margin: 14px 0 0;
+  border: 0.5px solid var(--rule);
+  background: var(--soft);
+  overflow: hidden;
+}
+.supporting-card img { display:block; width:100%; height:auto; }
+.workflow {
+  display:grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap:12px;
+  margin-top:18px;
+}
+.workflow-step {
+  background: var(--surface);
+  border: 0.5px solid var(--rule);
+  padding: 16px 14px;
+  min-height: 98px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.workflow-step span {
+  font-size:10px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.workflow-step strong {
+  font-size:14px;
+  line-height:1.45;
+  color:var(--ink);
+}
+.section .support-copy { margin-top:14px; }
+.reflection {
+  padding-bottom: 8px;
+}
+@media (max-width: 820px) {
+  .hero-meta, .feature-grid, .outcomes-grid, .workflow, .supporting-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="topbar-brand" href="index.html">Flora He</a>
+  <ul class="topbar-nav">
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="index.html#resume">Resume</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a class="topbar-back" href="index.html#projects">Back to Portfolio</a>
+</header>
+
+<main class="content">
+  <section class="hero">
+    <p class="eyebrow">Case Study · Internal Systems / Administration</p>
+    <h1>Student Support Admin Dashboard</h1>
+    <p class="section-label">Internal Case Management System</p>
+    <p class="hero-intro">An internal administrative dashboard designed to manage student service requests, support case handling workflows, and maintain clear records across the request lifecycle.</p>
+    <div class="hero-tags">
+      <span class="tag-dark">Case assignment</span>
+      <span class="tag-light">Workflow tracking</span>
+      <span class="tag-light">Internal notes</span>
+      <span class="tag-light">Activity history</span>
+    </div>
+    <div class="hero-image">
+      <img src="student-support-admin-dashboard-hero.png" alt="Student Support Admin Dashboard showing the request register and case details workspace">
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-label">Context</p>
+    <h2>Why this project was created</h2>
+    <p>Student support teams in university and public-sector environments often manage a high volume of requests across enrolment, fees, wellbeing, academic records, and general service enquiries. These requests require structured triage, assignment, follow-up, resolution, and clear record keeping.</p>
+    <p class="support-copy">This project was created to demonstrate internal systems thinking rather than public-facing interface design. It focuses on how staff review incoming requests, manage case progression, document actions, and maintain visibility across the request lifecycle.</p>
+  </section>
+
+  <section class="section">
+    <p class="section-label">The Problem</p>
+    <h2>Where request handling can break down</h2>
+    <ul class="list">
+      <li>Limited visibility of current case status and ownership makes triage slower.</li>
+      <li>Without a clear workflow, requests can move inconsistently between review, follow-up, and resolution.</li>
+      <li>Weak or inconsistent internal notes reduce continuity between staff.</li>
+      <li>Action history can become difficult to trace when assignment, updates, and case decisions are not recorded clearly.</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <p class="section-label">The Solution</p>
+    <h2>A request-handling dashboard built around workflow and record visibility</h2>
+    <p>The Student Support Admin Dashboard was designed as an internal administrative system to simulate how staff might manage incoming support requests in a structured environment. Rather than focusing on public-facing presentation, the interface supports case progression, ownership, and record visibility.</p>
+    <p class="support-copy">The system brings together a central request register, a case detail workspace, officer assignment controls, internal notes, and an audit-friendly activity log so that request handling remains visible and traceable.</p>
+  </section>
+
+  <section class="section">
+    <p class="section-label">Key Features</p>
+    <h2>What matters in the system</h2>
+    <div class="feature-grid">
+      <article class="feature-card">
+        <h3>Request Register</h3>
+        <p>Centralised list of service requests with filtering by status, category, priority, and assigned staff. Due dates and request ownership stay visible while staff work through the queue.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Case Detail Workspace</h3>
+        <p>Detailed request view with student information, request metadata, case controls, and supporting context for review and follow-up.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Case Controls</h3>
+        <p>Assigned officer, status, priority, and due date controls support workflow updates without leaving the current case context.</p>
+        <figure>
+          <img src="student-support-admin-dashboard-case-controls.png" alt="Case controls section showing assigned officer, status, priority, due date, and workflow action buttons">
+        </figure>
+      </article>
+      <article class="feature-card">
+        <h3>Internal Notes</h3>
+        <p>Administrative notes help preserve continuity between staff and keep operational decisions recorded against the request.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Activity Log</h3>
+        <p>A chronological record of submission, triage, assignment, workflow updates, notes, and resolution actions supports auditability and case history visibility.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-label">Workflow Design</p>
+    <h2>How the request lifecycle is structured</h2>
+    <div class="workflow">
+      <div class="workflow-step"><span>Step 1</span><strong>Request submitted</strong></div>
+      <div class="workflow-step"><span>Step 2</span><strong>Triage and categorisation</strong></div>
+      <div class="workflow-step"><span>Step 3</span><strong>Assignment to staff</strong></div>
+      <div class="workflow-step"><span>Step 4</span><strong>In progress</strong></div>
+      <div class="workflow-step"><span>Step 5</span><strong>Resolved</strong></div>
+      <div class="workflow-step"><span>Step 6</span><strong>Reopened if needed</strong></div>
+    </div>
+    <p class="support-copy">The workflow was designed around realistic administrative processes used in service delivery environments, where requests move through review, ownership, action, and resolution while maintaining a clear record of decisions.</p>
+  </section>
+
+  <section class="section split">
+    <div>
+      <p class="section-label">Design Approach</p>
+      <h2>Structured for usability, not decoration</h2>
+      <p>The interface prioritises clarity, information hierarchy, and operational usability. The split-view layout allows staff to browse the request register while reviewing case details, which helps reduce friction in high-volume administrative settings.</p>
+      <p class="support-copy">Content is organised to support quick review and efficient action, with consistent sections for request information, student context, notes, and activity history.</p>
+    </div>
+    <div>
+      <p class="section-label">Primary Screen</p>
+      <div class="hero-image" style="margin-top:0;">
+        <img src="student-support-admin-dashboard-hero.png" alt="Student Support Admin Dashboard case detail panel and request register">
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-label">Supporting Views</p>
+    <h2>Additional screens for workload visibility</h2>
+    <div class="supporting-grid">
+      <article class="supporting-card">
+        <h3>Teams and Staff</h3>
+        <p>This view supports workload allocation by showing active cases, overdue items, and staff availability across the service area.</p>
+        <figure>
+          <img src="student-support-admin-dashboard-teams.png" alt="Teams and Staff screen showing staffing overview, active cases, overdue cases, and availability">
+        </figure>
+      </article>
+      <article class="supporting-card">
+        <h3>Assigned to Me</h3>
+        <p>This screen helps individual staff prioritise upcoming due items and monitor their current case load within the broader request workflow.</p>
+        <figure>
+          <img src="student-support-admin-dashboard-assigned.png" alt="Assigned to Me screen showing active cases, upcoming due items, and overdue items for an individual staff member">
+        </figure>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-label">What This Project Demonstrates</p>
+    <h2>Professional relevance</h2>
+    <div class="outcomes-grid">
+      <article class="outcome-card">
+        <h3>Administrative workflow thinking</h3>
+        <p>Understanding of how service requests move through triage, assignment, action, and resolution.</p>
+      </article>
+      <article class="outcome-card">
+        <h3>Case handling and record keeping</h3>
+        <p>Ability to design interfaces that support internal notes, case controls, and structured documentation.</p>
+      </article>
+      <article class="outcome-card">
+        <h3>Auditability and action history</h3>
+        <p>Awareness of the importance of activity logs, ownership visibility, and traceable workflow updates.</p>
+      </article>
+      <article class="outcome-card">
+        <h3>Operational data structure</h3>
+        <p>Experience structuring request data for filtering, tracking, and day-to-day administrative visibility.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section split">
+    <div>
+      <p class="section-label">Tools Used</p>
+      <h2>Simple, appropriate tooling</h2>
+      <div class="tags">
+        <span class="tag-dark">React</span>
+        <span class="tag-dark">Vite</span>
+        <span class="tag-light">TypeScript</span>
+        <span class="tag-light">Mock data for workflow simulation</span>
+      </div>
+    </div>
+    <div class="reflection">
+      <p class="section-label">Reflection</p>
+      <h2>What this project reinforced</h2>
+      <p>Designing for an internal system shifts the focus from promotion to process. The project reinforced the importance of information hierarchy, record visibility, and interface structures that support consistent operational work rather than one-off interactions.</p>
+    </div>
+  </section>
+</main>
+</body>
+</html>
