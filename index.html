@@ -1009,6 +1009,69 @@ footer { background: var(--bg-card2); border-top: 0.5px solid var(--rule); paddi
 @keyframes jellyHover { 0%{transform:scale(1)} 34%{transform:scale(1.1,.91) translateY(-2px)} 60%{transform:scale(.96,1.07) translateY(-2px)} 80%{transform:scale(1.03,.98) translateY(-1px)} 100%{transform:scale(1)} }
 @keyframes jellyPress { 0%{transform:scale(1)} 36%{transform:scale(1.12,.78) translateY(2px)} 64%{transform:scale(.93,1.1)} 84%{transform:scale(1.03,.97)} 100%{transform:scale(1)} }
 
+/* DESKTOP POINTER — soft glass glow, contextual label and magnetic feedback */
+.pointer-aura,
+.pointer-label {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.pointer-aura {
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1px solid rgba(255,255,255,.72);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 28%,rgba(255,255,255,.9),rgba(244,193,222,.35) 44%,rgba(183,222,239,.3) 72%,rgba(255,255,255,.08));
+  box-shadow: 0 7px 22px rgba(170,130,169,.16), inset 0 1px 3px rgba(255,255,255,.8);
+  -webkit-backdrop-filter: blur(5px) saturate(150%);
+  backdrop-filter: blur(5px) saturate(150%);
+  transition: width .28s cubic-bezier(.2,.8,.2,1),height .28s cubic-bezier(.2,.8,.2,1),margin .28s cubic-bezier(.2,.8,.2,1),opacity .2s ease;
+}
+.pointer-aura.is-visible { opacity:.82; }
+.pointer-aura.is-active { width:58px;height:58px;margin:-29px 0 0 -29px;opacity:.92; }
+.pointer-label {
+  min-width: 48px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255,255,255,.72);
+  border-radius: 999px;
+  background: rgba(255,248,253,.7);
+  box-shadow: 0 10px 28px rgba(91,72,103,.14),inset 0 1px 0 rgba(255,255,255,.86);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
+  color: #514955;
+  font: 500 9px/1 var(--sans);
+  letter-spacing: .16em;
+  text-align: center;
+  transform: translate(18px,18px) scale(.78);
+  transition: opacity .18s ease,transform .3s cubic-bezier(.2,.85,.2,1.2);
+}
+.pointer-label.is-visible { opacity:1;transform:translate(20px,20px) scale(1); }
+.magnetic-target { transition:translate .38s cubic-bezier(.2,.8,.2,1),filter .25s ease; }
+.magnetic-target.is-magnetic { filter:drop-shadow(0 8px 15px rgba(169,126,163,.12)); }
+.pointer-ripple {
+  position: fixed;
+  z-index: 999;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 1px solid rgba(224,113,174,.42);
+  border-radius: 50%;
+  background: radial-gradient(circle,rgba(255,255,255,.72),rgba(220,164,205,.25) 50%,rgba(160,211,233,.16));
+  pointer-events: none;
+  animation: pointerRipple .52s cubic-bezier(.15,.65,.2,1) forwards;
+}
+@keyframes pointerRipple { to { opacity:0;scale:5.4;filter:blur(1px); } }
+
+@media (pointer: coarse), (max-width: 960px) {
+  .pointer-aura,.pointer-label { display:none; }
+  .magnetic-target { translate:none !important; }
+}
+
 @media (max-width: 1180px) {
   .product-carousel .project-card { width: 420px; min-width: 420px; flex-basis: 420px; }
 }
@@ -1136,6 +1199,8 @@ footer { background: var(--bg-card2); border-top: 0.5px solid var(--rule); paddi
 @media (prefers-reduced-motion: reduce) {
   .jelly-ui { animation: none !important; }
   .nav-logo { animation: none !important; }
+  .pointer-aura,.pointer-label { display:none; }
+  .magnetic-target { translate:none !important; transition:none !important; }
   .hero-unified-card { animation: none !important; transform: none !important; }
   .project-card,
   .project-card::before,
@@ -2542,6 +2607,96 @@ renderHeroNote('about');
   });
   window.addEventListener('resize', () => {
     if (window.innerWidth > 960) setMenu(false);
+  });
+})();
+</script>
+<script>
+(() => {
+  const finePointer = window.matchMedia('(pointer: fine)');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (!finePointer.matches || reduceMotion.matches) return;
+
+  const aura = document.createElement('span');
+  const label = document.createElement('span');
+  aura.className = 'pointer-aura';
+  label.className = 'pointer-label';
+  label.setAttribute('aria-hidden', 'true');
+  document.body.append(aura, label);
+
+  let pointerX = innerWidth / 2;
+  let pointerY = innerHeight / 2;
+  let auraX = pointerX;
+  let auraY = pointerY;
+  let labelX = pointerX;
+  let labelY = pointerY;
+
+  const labelledTargets = [
+    ['.project-card', 'VIEW'],
+    ['.dream-frame', 'PLAY'],
+    ['.contact-3d-media', 'PLAY'],
+    ['.ai-3d-viewer', 'EXPLORE']
+  ];
+  labelledTargets.forEach(([selector, text]) => {
+    document.querySelectorAll(selector).forEach((element) => {
+      element.dataset.cursorLabel = text;
+    });
+  });
+
+  const animatePointer = () => {
+    auraX += (pointerX - auraX) * .2;
+    auraY += (pointerY - auraY) * .2;
+    labelX += (pointerX - labelX) * .28;
+    labelY += (pointerY - labelY) * .28;
+    aura.style.transform = `translate3d(${auraX}px,${auraY}px,0)`;
+    label.style.left = `${labelX}px`;
+    label.style.top = `${labelY}px`;
+    requestAnimationFrame(animatePointer);
+  };
+  requestAnimationFrame(animatePointer);
+
+  document.addEventListener('pointermove', (event) => {
+    pointerX = event.clientX;
+    pointerY = event.clientY;
+    aura.classList.add('is-visible');
+    const target = event.target.closest('[data-cursor-label]');
+    if (target) {
+      label.textContent = target.dataset.cursorLabel;
+      label.classList.add('is-visible');
+      aura.classList.add('is-active');
+    } else {
+      label.classList.remove('is-visible');
+      aura.classList.remove('is-active');
+    }
+  }, { passive: true });
+
+  document.documentElement.addEventListener('mouseleave', () => {
+    aura.classList.remove('is-visible','is-active');
+    label.classList.remove('is-visible');
+  });
+
+  document.querySelectorAll('.jelly-ui,.hero-dock-item,.nav-logo').forEach((element) => {
+    element.classList.add('magnetic-target');
+    element.addEventListener('pointermove', (event) => {
+      const rect = element.getBoundingClientRect();
+      const x = (event.clientX - rect.left - rect.width / 2) * .16;
+      const y = (event.clientY - rect.top - rect.height / 2) * .16;
+      element.style.translate = `${x}px ${y}px`;
+      element.classList.add('is-magnetic');
+    });
+    element.addEventListener('pointerleave', () => {
+      element.style.translate = '0 0';
+      element.classList.remove('is-magnetic');
+    });
+  });
+
+  document.addEventListener('pointerdown', (event) => {
+    if (event.button !== 0) return;
+    const ripple = document.createElement('span');
+    ripple.className = 'pointer-ripple';
+    ripple.style.left = `${event.clientX}px`;
+    ripple.style.top = `${event.clientY}px`;
+    document.body.appendChild(ripple);
+    ripple.addEventListener('animationend', () => ripple.remove(), { once:true });
   });
 })();
 </script>
