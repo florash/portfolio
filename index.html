@@ -240,7 +240,6 @@ section { position: relative; overflow: hidden; }
 .hero-dock-item:hover,.hero-dock-item:focus-visible { transform: scale(1.2) translateY(-6px); background: transparent; outline: none; }
 .hero-dock-item svg { width: 42px; height: 42px; fill: currentColor; }
 .hero-dock-item svg.dock-linkedin-logo { width: 44px; height: 44px; }
-.dock-cv-image { width: 44px; height: 44px; display: block; border-radius: 11px; object-fit: cover; }
 .hero-dock-item.dock-laptop { font-size: 44px; }
 .hero-dock-item.dock-mail { font-size: 46px; }
 .hero-dock-item.dock-briefcase { font-size: 35px; }
@@ -635,28 +634,6 @@ section { position: relative; overflow: hidden; }
 .skill-col:nth-child(2) { padding-left: 40px; }
 .skill-col-title { font-size: 18px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; margin-bottom: 20px; }
 .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-
-/* RESUME */
-#resume { background: var(--bg-card2); }
-.resume-grid { display: grid; grid-template-columns: 300px 1fr; gap: 72px; align-items: start; }
-.resume-col-heading { font-size: clamp(28px,4vw,44px); font-weight: 600; letter-spacing: -0.02em; color: var(--ink); line-height: 1; margin-bottom: 36px; padding-bottom: 16px; border-bottom: 0.5px solid var(--rule); }
-.edu-item { display: flex; gap: 12px; margin-bottom: 28px; }
-.edu-dot { color: var(--faint); font-size: 10px; margin-top: 4px; flex-shrink: 0; }
-.edu-school { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
-.edu-year { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
-.edu-desc { font-size: 12px; color: var(--mid); line-height: 1.7; }
-.skill-group { margin-bottom: 20px; }
-.skill-group-lbl { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); margin-bottom: 10px; font-weight: 500; }
-.tags-wrap { display: flex; flex-wrap: wrap; gap: 7px; }
-.tag-sm-dark { display: inline-block; background: var(--tag-bg); color: var(--tag-txt); font-size: 11px; font-weight: 500; padding: 4px 12px; border-radius: 999px; }
-.tag-sm-light { display: inline-block; background: transparent; color: var(--mid); font-size: 11px; padding: 4px 12px; border-radius: 999px; border: 0.5px solid var(--rule); }
-.exp-item { padding: 22px 0; border-bottom: 0.5px solid var(--rule); }
-.exp-item:last-child { border-bottom: none; }
-.exp-header { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 3px; }
-.exp-role { font-size: 15px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
-.exp-year { font-size: 11px; color: var(--muted); white-space: nowrap; }
-.exp-org { font-size: 12px; color: var(--muted); margin-bottom: 10px; font-style: italic; }
-.exp-desc { font-size: 13px; line-height: 1.8; color: var(--mid); }
 
 /* CONTACT */
 #contact { background: var(--bg); }
@@ -1170,8 +1147,7 @@ footer { background: var(--bg-card2); border-top: 0.5px solid var(--rule); paddi
   .hero-dock::-webkit-scrollbar { display: none; }
   .hero-dock-item { width: 36px; height: 36px; flex-basis: 36px; font-size: 31px; }
   .hero-dock-item svg { width: 34px; height: 34px; }
-  .hero-dock-item svg.dock-linkedin-logo,
-  .dock-cv-image { width: 36px; height: 36px; }
+  .hero-dock-item svg.dock-linkedin-logo { width: 36px; height: 36px; }
   .hero-dock-item.dock-laptop { font-size: 36px; }
   .hero-dock-item.dock-mail { font-size: 37px; }
   .hero-dock-item.dock-briefcase,
@@ -1213,7 +1189,6 @@ footer { background: var(--bg-card2); border-top: 0.5px solid var(--rule); paddi
   .skill-col { border-right: none; padding: 24px 0; border-bottom: 0.5px solid var(--rule); }
   .skill-col:last-child { padding-left: 0; }
   .skill-col:nth-child(2) { padding-left: 0; }
-  .resume-grid { grid-template-columns: 1fr; gap: 48px; }
   .contact-grid { grid-template-columns: 1fr; }
   .contact-left { border-right: none; padding-right: 0; border-bottom: 0.5px solid var(--rule); padding-bottom: 56px; margin-bottom: 56px; }
   .contact-right { padding-left: 0; }
@@ -1275,7 +1250,6 @@ footer { background: var(--bg-card2); border-top: 0.5px solid var(--rule); paddi
   <ul class="nav-links" id="primaryNavigation">
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#resume">Resume</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -1322,10 +1296,6 @@ footer { background: var(--bg-card2); border-top: 0.5px solid var(--rule); paddi
     <a class="hero-dock-item" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
       <svg class="dock-linkedin-logo" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="10" style="fill:#0A66C2"/><path d="M14.2 19.2h5.1V35h-5.1V19.2Zm2.55-7.85a2.96 2.96 0 1 1 0 5.92 2.96 2.96 0 0 1 0-5.92ZM22.4 19.2h4.88v2.16h.07c.68-1.29 2.34-2.65 4.82-2.65 5.16 0 6.11 3.4 6.11 7.81V35h-5.09v-7.51c0-1.79-.03-4.09-2.49-4.09-2.5 0-2.88 1.95-2.88 3.96V35H22.4V19.2Z" style="fill:#fff"/></svg>
       <span class="hero-dock-tooltip">LinkedIn</span>
-    </a>
-    <a class="hero-dock-item dock-document" href="Flora_He_Resume_PORTFOLIO.pdf" target="_blank" aria-label="Download CV">
-      <img class="dock-cv-image" src="cv%20logo.jpg" alt="">
-      <span class="hero-dock-tooltip">Download CV</span>
     </a>
   </div>
 </section>
@@ -2222,69 +2192,6 @@ renderHeroNote('about');
 
 <div class="h-rule"></div>
 
-<!-- RESUME -->
-<section id="resume">
-  <div class="side"><span class="side-name">Resume</span><span class="side-rule"></span><span class="side-page">P / 04</span></div>
-  <div class="inner">
-    <div class="ghost-wrap">
-      <span class="ghost">Resume.</span>
-      <h2 class="section-heading" style="margin-bottom:52px;">Resume.</h2>
-    </div>
-    <div class="resume-grid">
-      <div>
-        <h3 class="resume-col-heading">Education</h3>
-        <div class="edu-item">
-          <span class="edu-dot">○</span>
-          <div>
-            <p class="edu-school">University of Technology Sydney</p>
-            <p class="edu-year">2019 – 2020</p>
-            <p class="edu-desc">Master of Engineering Management<br>Risk · Project · Operations Management</p>
-          </div>
-        </div>
-        <div class="edu-item">
-          <span class="edu-dot">○</span>
-          <div>
-            <p class="edu-school">Macquarie University</p>
-            <p class="edu-year">2016 – 2019</p>
-            <p class="edu-desc">Bachelor of Information Technology<br>Web Dev · Databases · Software Engineering</p>
-          </div>
-        </div>
-        <div style="margin-top:40px;">
-          <h3 class="resume-col-heading" style="font-size:24px;">Core Stack</h3>
-          <div class="tags-wrap">
-            <span class="tag-sm-dark">TypeScript</span>
-            <span class="tag-sm-dark">React</span>
-            <span class="tag-sm-light">JavaScript</span>
-            <span class="tag-sm-light">REST APIs</span>
-            <span class="tag-sm-light">Supabase</span>
-            <span class="tag-sm-light">Capacitor / iOS</span>
-          </div>
-        </div>
-      </div>
-      <div>
-        <h3 class="resume-col-heading">Experience</h3>
-        <div class="exp-item">
-          <div class="exp-header"><p class="exp-role">Founder / Web Developer</p><span class="exp-year">2025 — Present</span></div>
-          <p class="exp-org">2600 Design, Canberra</p>
-          <p class="exp-desc">Design, build, test, and maintain web and iOS products including PTEScore, IELTSync, and TruePathway. Work across React and TypeScript interfaces, APIs, authentication, accessibility, and deployment for products supporting 100+ users worldwide.</p>
-        </div>
-        <div class="exp-item">
-          <div class="exp-header"><p class="exp-role">Web Developer</p><span class="exp-year">2021 — 2023</span></div>
-          <p class="exp-org">K2L, Canberra</p>
-          <p class="exp-desc">Built and maintained client websites across CMS platforms, delivering HTML, CSS, and JavaScript updates within established templates and design systems. Coordinated requirements, QA, and releases with stakeholders.</p>
-        </div>
-        <div class="exp-item">
-          <div class="exp-header"><p class="exp-role">Developer / Project Coordinator</p><span class="exp-year">2021</span></div>
-          <p class="exp-org">ACS WIL Program</p>
-          <p class="exp-desc">Led front-end delivery in a seven-person team, translating requirements into an iterative prototype while coordinating tasks, documentation, and team communication.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="h-rule"></div>
-
 <!-- CONTACT -->
 <section id="contact">
   <div class="side"><span class="side-name">Contact</span><span class="side-rule"></span><span class="side-page">P / 05</span></div>
@@ -2326,9 +2233,6 @@ renderHeroNote('about');
           </a>
           <a href="https://github.com/florash" target="_blank" rel="noopener noreferrer" class="contact-link">
             <span class="cl-lbl">GitHub</span><span class="cl-val">github.com/florash →</span>
-          </a>
-          <a href="Flora_He_Resume_PORTFOLIO.pdf" class="contact-link" download>
-            <span class="cl-lbl">CV</span><span class="cl-val">Download PDF →</span>
           </a>
         </div>
       </aside>
