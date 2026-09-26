@@ -44,9 +44,11 @@
     narrowRadius: 1.3,
     narrowPosX: -2.0,
     narrowEndScale: 4.22,
+    tightPlane: 1.1,
     tightAt: 640,
-    tightRadius: 0.82,
-    tightPosX: -2.15,
+    tightRadius: 0.78,
+    tightPosX: -2.7,
+    tightEndScale: 3.6,
     planeSize: 96,
     // The source demo owns the entire viewport. This section is a narrower,
     // taller slice inside the portfolio, so a slightly tighter arc keeps the
@@ -414,7 +416,7 @@
     fit = Math.min(params.maxScale, Math.max(params.minScale, s));
     narrowNow = viewW <= params.narrowAt;
     tightNow = viewW <= params.tightAt;
-    planeK = narrowNow ? params.narrowPlane : 1;
+    planeK = tightNow ? params.tightPlane : narrowNow ? params.narrowPlane : 1;
     radiusK = (narrowNow ? params.narrowRadius : 1) * (tightNow ? params.tightRadius : 1);
   }
 
@@ -480,13 +482,14 @@
     picking = null;
   }
 
-  function pick(i, now) {
+  function pick(i, now, openAfter) {
     var slot = TAU / COUNT;
     var base = frontAngle - params.seed * DEG - signedOffset(i) * slot;
     var target = base + Math.round((state.spin - base) / TAU) * TAU;
     var slots = Math.abs(target - state.spin) / slot;
+    var destination = projectIndexForPlane(i);
     if (slots < 0.01) {
-      openProject(projectIndexForPlane(i));
+      if (openAfter !== false) openProject(destination);
       return;
     }
     spinVel = 0;
@@ -495,7 +498,9 @@
       from: state.spin,
       to: target,
       start: now,
-      duration: params.pickTime * Math.sqrt(Math.max(1, slots))
+      duration: params.pickTime * Math.sqrt(Math.max(1, slots)),
+      projectIndex: destination,
+      openAfter: openAfter !== false
     };
   }
 
@@ -506,6 +511,23 @@
   function openProject(index) {
     var project = PROJECTS[index];
     if (project && project.href) window.location.assign(project.href);
+  }
+
+  function planeForProjectIndex(index) {
+    for (var i = 0; i < COUNT; i++) {
+      if (projectIndexForPlane(i) === index) return i;
+    }
+    return -1;
+  }
+
+  function stepProject(delta) {
+    var current = picking ? picking.projectIndex : (shown >= 0 ? shown : 0);
+    var next = ((current + delta) % COUNT + COUNT) % COUNT;
+    var plane = planeForProjectIndex(next);
+    if (plane >= 0) {
+      updateProjectReadout(next);
+      pick(plane, performance.now(), false);
+    }
   }
 
   function buildProjectList() {
@@ -543,9 +565,13 @@
     var counter = document.getElementById('liquidRingCounter');
     var title = document.getElementById('liquidRingCurrent');
     var meta = document.getElementById('liquidRingMeta');
+    var mobileCounter = document.querySelector('[data-liquid-mobile-counter]');
+    var mobileName = document.querySelector('[data-liquid-mobile-name]');
     if (counter) counter.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(COUNT).padStart(2, '0');
     if (title) title.textContent = project.name;
     if (meta) meta.textContent = project.type + ' · ' + project.year;
+    if (mobileCounter) mobileCounter.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(COUNT).padStart(2, '0');
+    if (mobileName) mobileName.textContent = project.name;
     projectListButtons.forEach(function (button, buttonIndex) {
       var active = buttonIndex === index;
       button.classList.toggle('is-active', active);
@@ -626,7 +652,7 @@
   function layout(dt) {
     var step = TAU / COUNT;
     var spread = clamp01(state.spread);
-    var endScale = narrowNow ? params.narrowEndScale : params.endScale;
+    var endScale = tightNow ? params.tightEndScale : narrowNow ? params.narrowEndScale : params.endScale;
     var posX = tightNow ? params.tightPosX : narrowNow ? params.narrowPosX : params.posX;
     var shift = clamp01(state.shift);
     var g = (1 + (endScale - 1) * shift) * fit;
@@ -817,7 +843,7 @@
     uniforms.uFocusParticleMotion.value.set(particleFlow, reducedMotion ? 0 : 1);
 
     if (over >= 0) focusPos.copy(rest[over]);
-    if (frontI >= 0 && frontCell !== shown) {
+    if (frontI >= 0 && frontCell !== shown && !picking) {
       shown = frontCell;
       updateProjectReadout(shown);
     }
@@ -897,7 +923,10 @@
     state.spin = picking.from + (picking.to - picking.from) * easeInOutCubic(progress);
     if (progress >= 1) {
       state.spin = picking.to;
+      var destination = picking.projectIndex;
+      var openAfter = picking.openAfter;
       picking = null;
+      if (openAfter && destination >= 0) openProject(destination);
     }
   }
 
@@ -990,7 +1019,7 @@
 
   function onClick() {
     if (!interactive || pointerTravel >= 5 || over < 0) return;
-    pick(over, performance.now());
+    pick(over, performance.now(), true);
   }
 
   stage.addEventListener('wheel', onWheel, { passive: false });
@@ -1004,6 +1033,10 @@
 
   var replayButton = document.querySelector('[data-liquid-replay]');
   if (replayButton) replayButton.addEventListener('click', replay);
+  var previousProject = document.querySelector('[data-liquid-prev]');
+  var nextProject = document.querySelector('[data-liquid-next]');
+  if (previousProject) previousProject.addEventListener('click', function () { stepProject(-1); });
+  if (nextProject) nextProject.addEventListener('click', function () { stepProject(1); });
 
   projectListButtons = buildProjectList();
   resize();

@@ -6,7 +6,7 @@
 <title>Flora He — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="liquid-card-ring.css?v=20260902-links1">
+<link rel="stylesheet" href="liquid-card-ring.css?v=20260926-mobile5">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -1202,6 +1202,25 @@ footer { background: var(--bg-card2); border-top: 0.5px solid var(--rule); paddi
   footer { flex-direction: column; gap: 8px; text-align: center; padding: 24px; }
 }
 
+@media (max-width: 560px) {
+  .chat-widget {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    margin: 0 16px 24px;
+    align-items: flex-end;
+  }
+  .chat-panel {
+    position: fixed;
+    right: 16px;
+    bottom: 76px;
+    width: calc(100vw - 32px);
+    z-index: 401;
+  }
+  .chat-toggle { min-width: 148px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .jelly-ui { animation: none !important; }
   .nav-logo { animation: none !important; }
@@ -1679,18 +1698,28 @@ renderHeroNote('about');
           <button class="liquid-ring-replay" type="button" data-liquid-replay>Replay particles</button>
         </div>
       </div>
-      <div class="liquid-ring-stage" id="liquidCardRing" aria-label="Interactive project card ring">
-        <div class="liquid-ring-info" aria-hidden="true">
-          <span class="liquid-ring-counter" id="liquidRingCounter">01 / 14</span>
-          <strong class="liquid-ring-current" id="liquidRingCurrent">PTEscore</strong>
-          <span class="liquid-ring-meta" id="liquidRingMeta">EdTech · AI Learning · 2026</span>
+      <div class="liquid-ring-stage-wrap">
+        <div class="liquid-ring-stage" id="liquidCardRing" aria-label="Interactive project card ring">
+          <div class="liquid-ring-info" aria-hidden="true">
+            <span class="liquid-ring-counter" id="liquidRingCounter">01 / 14</span>
+            <strong class="liquid-ring-current" id="liquidRingCurrent">PTEscore</strong>
+            <span class="liquid-ring-meta" id="liquidRingMeta">EdTech · AI Learning · 2026</span>
+          </div>
+          <p class="liquid-ring-caption">Particle condensation<br>Glass bridge · ASCII shadow</p>
+          <span class="liquid-ring-live" id="liquidRingLive" aria-live="polite"></span>
         </div>
         <aside class="liquid-ring-project-list" aria-label="Projects in the project ring">
           <span class="liquid-ring-project-list-label">Project index · 14</span>
+          <div class="liquid-ring-mobile-nav" aria-label="Choose a project">
+            <button type="button" data-liquid-prev aria-label="Previous project">←</button>
+            <div class="liquid-ring-mobile-current">
+              <span data-liquid-mobile-counter>01 / 14</span>
+              <strong data-liquid-mobile-name>PTEscore</strong>
+            </div>
+            <button type="button" data-liquid-next aria-label="Next project">→</button>
+          </div>
           <ol data-liquid-project-list></ol>
         </aside>
-        <p class="liquid-ring-caption">Particle condensation<br>Glass bridge · ASCII shadow</p>
-        <span class="liquid-ring-live" id="liquidRingLive" aria-live="polite"></span>
       </div>
     </div>
     <div class="framedreaming-showcase framedreaming-embedded" aria-labelledby="framedreaming-showcase-title">
@@ -1712,8 +1741,8 @@ renderHeroNote('about');
   </div>
 </section>
 
-<script src="liquid-card-ring-shader.js?v=20260902-links1"></script>
-<script src="liquid-card-ring.js?v=20260902-links2"></script>
+<script src="liquid-card-ring-shader.js?v=20260926-mobile5"></script>
+<script src="liquid-card-ring.js?v=20260926-mobile5"></script>
 
 <div class="h-rule"></div>
 

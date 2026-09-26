@@ -117,6 +117,10 @@
   isolation: isolate;
 }
 
+.liquid-ring-stage-wrap {
+  position: relative;
+}
+
 .liquid-ring-stage.is-dragging { cursor: grabbing; }
 
 .liquid-ring-stage::before {
@@ -189,7 +193,8 @@
   box-shadow: 0 18px 42px rgba(82,111,128,.12), inset 0 1px 0 rgba(255,255,255,.9);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   backdrop-filter: blur(18px) saturate(140%);
-  pointer-events: auto;
+  /* Let clicks reach cards in the panel's empty glass space. */
+  pointer-events: none;
 }
 
 .liquid-ring-project-list-label {
@@ -200,6 +205,10 @@
   font-size: 9px;
   letter-spacing: .14em;
   text-transform: uppercase;
+}
+
+.liquid-ring-mobile-nav {
+  display: none;
 }
 
 .liquid-ring-project-list ol {
@@ -228,6 +237,7 @@
   text-align: left;
   text-decoration: none;
   cursor: pointer;
+  pointer-events: auto;
   transition: color .2s ease, background .2s ease, box-shadow .2s ease, transform .2s ease;
 }
 
@@ -300,22 +310,79 @@
   .liquid-ring-section { margin: 54px 0 72px; border-radius: 24px; }
   .liquid-ring-heading { align-items: flex-start; flex-direction: column; padding: 28px 22px 0; gap: 18px; }
   .liquid-ring-help { align-items: flex-start; text-align: left; }
+  .liquid-ring-stage-wrap { display: flex; flex-direction: column; gap: 16px; }
   .liquid-ring-stage { height: 660px; min-height: 660px; border-radius: 0 0 23px 23px; }
   .liquid-ring-info { top: 8%; right: 22px; bottom: auto; width: min(214px, 38vw); }
-  .liquid-ring-project-list { top: 29%; right: 22px; left: auto; width: min(220px, 40vw); padding: 13px 8px 10px; }
+  .liquid-ring-project-list { position: relative; top: auto; right: auto; bottom: auto; left: auto; width: auto; margin: 0 22px 22px; padding: 13px 8px 10px; }
   .liquid-ring-project-list ol { display: block; max-height: 350px; }
   .liquid-ring-project { min-height: 25px; padding: 6px 6px; font-size: 9px; }
   .liquid-ring-caption { left: 22px; bottom: 28px; max-width: 180px; }
 }
 
 @media (max-width: 520px) {
-  .liquid-ring-stage { height: 560px; min-height: 560px; }
+  .liquid-ring-stage-wrap { gap: 14px; }
+  .liquid-ring-stage { height: 480px; min-height: 480px; }
   .liquid-ring-info { top: 7%; width: min(190px, 44vw); padding: 9px 11px 10px; }
-  .liquid-ring-project-list { top: 28%; right: 18px; width: min(204px, 50vw); }
-  .liquid-ring-project-list ol { max-height: 330px; }
-  .liquid-ring-project { min-height: 23px; padding: 5px 5px; font-size: 8px; }
+  .liquid-ring-project-list {
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    width: auto;
+    margin: 0 18px 18px;
+    padding: 12px 10px 10px;
+  }
+  .liquid-ring-project-list ol { display: none; }
+  .liquid-ring-mobile-nav {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr) 36px;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .liquid-ring-mobile-nav button {
+    min-height: 34px;
+    padding: 0;
+    border: 1px solid rgba(166,220,232,.58);
+    border-radius: 999px;
+    background: rgba(255,255,255,.48);
+    color: #4f899f;
+    font: 16px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+  .liquid-ring-mobile-nav button:active,
+  .liquid-ring-mobile-nav button:focus-visible {
+    border-color: #e0218a;
+    color: #e0218a;
+    outline: none;
+  }
+  .liquid-ring-mobile-current {
+    min-width: 0;
+    padding: 2px 6px;
+    text-align: center;
+  }
+  .liquid-ring-mobile-current span,
+  .liquid-ring-mobile-current strong {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .liquid-ring-mobile-current span {
+    color: rgba(78,111,126,.66);
+    font: 8px/1.4 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    letter-spacing: .14em;
+  }
+  .liquid-ring-mobile-current strong {
+    margin-top: 2px;
+    color: #312b38;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -.03em;
+  }
   .liquid-ring-current { font-size: 20px; }
-  .liquid-ring-caption { font-size: 8px; }
+  .liquid-ring-caption { bottom: 28px; max-width: 150px; font-size: 8px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
