@@ -6,6 +6,7 @@
 <title>Flora He — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="liquid-card-ring.css?v=20260902-links1">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -1668,16 +1669,29 @@ renderHeroNote('about');
       <span class="ghost">Projects.</span>
       <h2 class="section-heading">Projects.</h2>
     </div>
-    <div class="featured-products-head">
-      <h3>Products · Web &amp; iOS</h3>
-      <div class="featured-products-controls">
-        <p>Four products · Two demos launching in phases · 2026</p>
-        <button class="jelly-ui jelly-circle" type="button" data-featured-prev aria-label="Previous featured products">←</button>
-        <button class="jelly-ui jelly-circle" type="button" data-featured-next aria-label="Next featured products">→</button>
+    <div class="liquid-ring-section" aria-label="Interactive project card ring">
+      <div class="liquid-ring-heading">
+        <div>
+          <p class="liquid-ring-kicker">Interactive case studies · WebGL</p>
+        </div>
+        <div class="liquid-ring-help">
+          <span>Drag · Scroll · Click a card</span>
+          <button class="liquid-ring-replay" type="button" data-liquid-replay>Replay particles</button>
+        </div>
       </div>
-    </div>
-    <div class="featured-products-carousel" id="featuredProductsCarousel" aria-label="Featured products — auto-scroll, drag or swipe">
-      <div class="featured-products-grid" id="featuredProductsGrid"></div>
+      <div class="liquid-ring-stage" id="liquidCardRing" aria-label="Interactive project card ring">
+        <div class="liquid-ring-info" aria-hidden="true">
+          <span class="liquid-ring-counter" id="liquidRingCounter">01 / 14</span>
+          <strong class="liquid-ring-current" id="liquidRingCurrent">PTEscore</strong>
+          <span class="liquid-ring-meta" id="liquidRingMeta">EdTech · AI Learning · 2026</span>
+        </div>
+        <aside class="liquid-ring-project-list" aria-label="Projects in the project ring">
+          <span class="liquid-ring-project-list-label">Project index · 14</span>
+          <ol data-liquid-project-list></ol>
+        </aside>
+        <p class="liquid-ring-caption">Particle condensation<br>Glass bridge · ASCII shadow</p>
+        <span class="liquid-ring-live" id="liquidRingLive" aria-live="polite"></span>
+      </div>
     </div>
     <div class="framedreaming-showcase framedreaming-embedded" aria-labelledby="framedreaming-showcase-title">
       <div class="framedreaming-intro">
@@ -1694,444 +1708,12 @@ renderHeroNote('about');
         <figure class="dream-frame"><video autoplay muted loop playsinline preload="metadata" aria-label="AI-generated moon and flower garden video"><source src="framedreaming-hautian-web.mp4" type="video/mp4"></video><figcaption class="dream-frame-label">Moonlit Garden · AI Video</figcaption></figure>
       </div>
     </div>
-    <div class="projects-carousel" data-projects-carousel>
-      <div class="projects-track">
-<article class="project-card">
-              <div class="card-color" style="background:#dfe6ee;">
-                <img src="student-support-admin-dashboard-overview.png" alt="Student Support Admin Dashboard showing operational summary cards, trend chart, and service request distribution">
-                <span class="card-cat">Internal System · Operations</span>
-              </div>
-              <div class="card-body">
-                <p class="card-title">Student Support Admin Dashboard</p>
-                <p class="card-desc">Internal student services dashboard designed around operational overview, request intake, at-risk visibility, workflow tracking, and case management for a university-style support team.</p>
-                <div class="card-footer">
-                  <div class="card-tags"><span class="tag-dark">TypeScript</span><span class="tag-light">Case Management</span></div>
-                  <div class="card-footer-links">
-                    <a class="card-link" href="https://florash.github.io/student-support-admin-dashboard/" target="_blank" rel="noopener noreferrer"><span>View Live</span><span class="card-link-arrow">→</span></a>
-                    <a class="card-link" href="project-student-support-admin-dashboard.html"><span>View Case Study</span><span class="card-link-arrow">→</span></a>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-<article class="project-card">
-              <div class="card-color" style="background:#ede5db;">
-                <img src="img-2600design-desktop.png" alt="2600 Design">
-                <span class="card-cat">Web Design · Branding</span>
-              </div>
-              <div class="card-body">
-                <p class="card-title">2600 Design</p>
-                <p class="card-desc">Studio website for a Canberra web design brand with a refined, boutique aesthetic.</p>
-                <div class="card-footer">
-                  <div class="card-tags"><span class="tag-dark">Web Design</span><span class="tag-light">Branding</span></div>
-                  <div class="card-footer-links">
-                    <a class="card-link" href="https://www.2600design.com.au" target="_blank" rel="noopener noreferrer"><span>View Live</span><span class="card-link-arrow">→</span></a>
-                    <a class="card-link" href="project-2600-design.html"><span>View Case Study</span><span class="card-link-arrow">→</span></a>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-<a class="project-card" href="project-cloudy-clothing.html">
-              <div class="card-color" style="background:#e8ecef;">
-                <img src="cloudyclothing.webp" alt="Cloudy Clothing">
-                <span class="card-cat">WordPress · Ecommerce</span>
-              </div>
-              <div class="card-body">
-                <p class="card-title">Cloudy Clothing</p>
-                <p class="card-desc">Custom fashion ecommerce store with a soft, minimal shopping experience.</p>
-                <div class="card-footer">
-                  <div class="card-tags"><span class="tag-dark">WordPress</span><span class="tag-light">WooCommerce</span></div>
-                  <span class="card-link">View Case Study →</span>
-                </div>
-              </div>
-            </a>
-
-<article class="project-card">
-              <div class="card-color" style="background:#dde4dc;">
-                <img src="shopify-hero.png" alt="Green Bloom Matcha Shopify homepage">
-                <span class="card-cat">Shopify · Ecommerce</span>
-              </div>
-              <div class="card-body">
-                <p class="card-title">Green Bloom Matcha</p>
-                <p class="card-desc">Shopify-focused ecommerce concept built to show soft visual merchandising, mobile-first browsing, and premium brand presentation.</p>
-                <div class="card-footer">
-                  <div class="card-tags"><span class="tag-dark">Shopify</span><span class="tag-light">Ecommerce UX</span></div>
-                  <div class="card-footer-links">
-                    <a class="card-link" href="https://www.2600design.com.au/shopify-websites.html" target="_blank" rel="noopener noreferrer"><span>View Live</span><span class="card-link-arrow">→</span></a>
-                    <a class="card-link" href="project-shopify-store.html"><span>View Case Study</span><span class="card-link-arrow">→</span></a>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-<article class="project-card">
-              <div class="card-color" style="background:#dde7ef;">
-                <img src="student-support-portal.png" alt="Student Support Service Portal">
-                <span class="card-cat">Service Portal · React</span>
-              </div>
-              <div class="card-body">
-                <p class="card-title">Student Support Service Portal</p>
-                <p class="card-desc">Accessible student support portal designed to show public-sector information architecture, service clarity, and realistic user journeys.</p>
-                <div class="card-footer">
-                  <div class="card-tags"><span class="tag-dark">React</span><span class="tag-light">Accessibility</span></div>
-                  <div class="card-footer-links">
-                    <a class="card-link" href="https://florash.github.io/Student-Support-Service-Portal/" target="_blank" rel="noopener noreferrer"><span>View Live</span><span class="card-link-arrow">→</span></a>
-                    <a class="card-link" href="project-student-support-service-portal.html"><span>View Case Study</span><span class="card-link-arrow">→</span></a>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-<a class="project-card" href="https://florash.github.io/rainyhour/" target="_blank">
-              <div class="card-color" style="background:#d8e2e8;">
-                <img src="img-rainyhour-desktop.png" alt="Rainy Hour">
-                <span class="card-cat">Creative Dev</span>
-              </div>
-              <div class="card-body">
-                <p class="card-title">Rainy Hour</p>
-                <p class="card-desc">Ambient soundscape app with layered rain visuals, audio controls, and a calm interactive mood.</p>
-                <div class="card-footer">
-                  <div class="card-tags"><span class="tag-dark">JavaScript</span><span class="tag-light">Canvas API</span></div>
-                  <span class="card-link">View Live →</span>
-                </div>
-              </div>
-            </a>
-
-<a class="project-card" href="https://florash.github.io/adopt-dont-shop/" target="_blank">
-              <div class="card-color" style="background:#efe6dc;">
-                <img src="adpot dont shop.png" alt="Adopt Don't Shop campaign artwork">
-                <span class="card-cat">Graphic Design · Campaign</span>
-              </div>
-              <div class="card-body">
-                <p class="card-title">Adopt Don't Shop</p>
-                <p class="card-desc">Graphic design campaign concept for pet adoption, combining soft editorial layout, visual storytelling, and social-first messaging.</p>
-                <div class="card-footer">
-                  <div class="card-tags"><span class="tag-dark">Graphic Design</span><span class="tag-light">Social Impact</span></div>
-                  <span class="card-link">View Live →</span>
-                </div>
-              </div>
-            </a>
-
-<a class="project-card" href="giannisitalian_audit_v8.pdf" target="_blank">
-              <div class="card-color" style="background:#f0ece4;">
-                <img src="giannisitalian_card_v3.png" alt="SEO and Website Performance Audit">
-                <span class="card-cat">SEO · Web Audit</span>
-              </div>
-              <div class="card-body">
-                <p class="card-title">SEO &amp; Website Performance Audit</p>
-                <p class="card-desc">Technical SEO and performance audit project focused on visibility, speed, and site health.</p>
-                <div class="card-footer">
-                  <div class="card-tags"><span class="tag-dark">SEO</span><span class="tag-light">Web Audit</span></div>
-                  <span class="card-link">View Report ↗</span>
-                </div>
-              </div>
-            </a>
-
-<a class="project-card" href="https://stockwise-pi.vercel.app" target="_blank">
-              <div class="card-color" style="background:#dde4dc;">
-                <img src="img-stockwise-desktop.png" alt="Stockwise">
-                <span class="card-cat">React · FastAPI</span>
-              </div>
-              <div class="card-body">
-                <p class="card-title">Stockwise</p>
-                <p class="card-desc">Stock analysis platform with AI-powered insights, live market data, and bilingual support.</p>
-                <div class="card-footer">
-                  <div class="card-tags"><span class="tag-dark">React</span><span class="tag-dark">FastAPI</span></div>
-                  <span class="card-link">View Live →</span>
-                </div>
-              </div>
-            </a>
-
-<a class="project-card" href="https://florash.github.io/i-love-wallpaper/" target="_blank">
-              <div class="card-color" style="background:#e8e0ec;">
-                <img src="img-wallpaper-desktop.png" alt="I Love Wallpaper">
-                <span class="card-cat">UI Design · Mobile</span>
-              </div>
-              <div class="card-body">
-                <p class="card-title">I Love Wallpaper</p>
-                <p class="card-desc">Mobile wallpaper gallery concept with category browsing and a simple visual interface.</p>
-                <div class="card-footer">
-                  <div class="card-tags"><span class="tag-dark">UI Design</span><span class="tag-light">Mobile</span></div>
-                  <span class="card-link">View Live →</span>
-                </div>
-              </div>
-            </a>
-            <article class="project-card" data-product-card="project-ptescore.html">
-              <div class="card-color"><div class="product-shot-cover"><img src="images/product-ptescore-showcase.png" alt="PTEscore web and iOS product showcase"></div><span class="card-cat">EdTech · AI Learning</span></div>
-              <div class="card-body"><p class="card-title">PTEscore</p><p class="card-desc">A focused PTE preparation platform that turns practice into measurable progress through realistic tasks, scoring insights, and a clear learning flow.</p><div class="card-footer"><div class="card-tags"><span class="tag-dark">EdTech</span><span class="tag-light">Product Design</span></div><div class="card-footer-links"><a class="card-link" href="https://ptescore.com.au" target="_blank" rel="noopener noreferrer">View Live →</a><a class="card-link" href="project-ptescore.html">View Case Study →</a></div></div></div>
-            </article>
-
-            <article class="project-card" data-product-card="project-ieltsync.html">
-              <div class="card-color"><div class="product-shot-cover"><img src="images/product-ieltsync-showcase.png" alt="IELTSync web and iOS product showcase"></div><span class="card-cat">EdTech · Study Platform</span></div>
-              <div class="card-body"><p class="card-title">IELTSync</p><p class="card-desc">An IELTS learning experience designed to keep practice, feedback, and progress in sync across the four core language skills.</p><div class="card-footer"><div class="card-tags"><span class="tag-dark">Learning UX</span><span class="tag-light">Web App</span></div><div class="card-footer-links"><a class="card-link" href="https://ieltsync.com.au" target="_blank" rel="noopener noreferrer">View Live →</a><a class="card-link" href="project-ieltsync.html">View Case Study →</a></div></div></div>
-            </article>
-
-            <article class="project-card" data-product-card="project-truepathway.html">
-              <div class="card-color"><div class="product-shot-cover"><img src="images/product-truepathway-showcase.png" alt="TruePathway web and iOS product showcase"></div><span class="card-cat">Web & iOS · Demo</span></div>
-              <div class="card-body"><p class="card-title">TruePathway</p><p class="card-desc">A guidance-led digital product that helps people explore study pathways, understand their options, and move forward with greater confidence.</p><div class="card-footer"><div class="card-tags"><span class="tag-dark">UX Strategy</span><span class="tag-light">Information Design</span></div><div class="card-footer-links"><a class="card-link" href="https://truepathway.com.au" target="_blank" rel="noopener noreferrer">View Live →</a><a class="card-link" href="project-truepathway.html">View Case Study →</a></div></div></div>
-            </article>
-
-            <article class="project-card" data-product-card="project-framedreaming.html">
-              <div class="card-color"><div class="product-shot-cover"><img src="images/product-framedreaming-showcase.png" alt="FrameDreaming web and iOS product showcase"></div><span class="card-cat">Web & iOS · Demo</span></div>
-              <div class="card-body"><p class="card-title">FrameDreaming</p><p class="card-desc">A creative image-to-video experience built around visual storytelling, making it simple to shape still ideas into expressive moving frames.</p><div class="card-footer"><div class="card-tags"><span class="tag-dark">Creative AI</span><span class="tag-light">Image to Video</span></div><div class="card-footer-links"><a class="card-link" href="project-framedreaming.html">View Case Study →</a></div></div></div>
-            </article>
-
-<article class="project-card" aria-hidden="true">
-              <div class="card-color" style="background:#dfe6ee;">
-                <img src="student-support-admin-dashboard-overview.png" alt="Student Support Admin Dashboard showing operational summary cards, trend chart, and service request distribution">
-                <span class="card-cat">Internal System · Operations</span>
-              </div>
-              <div class="card-body">
-                <p class="card-title">Student Support Admin Dashboard</p>
-                <p class="card-desc">Internal student services dashboard designed around operational overview, request intake, at-risk visibility, workflow tracking, and case management for a university-style support team.</p>
-                <div class="card-footer">
-                  <div class="card-tags"><span class="tag-dark">TypeScript</span><span class="tag-light">Case Management</span></div>
-                  <div class="card-footer-links">
-                    <a class="card-link" tabindex="-1" href="https://florash.github.io/student-support-admin-dashboard/" target="_blank" rel="noopener noreferrer"><span>View Live</span><span class="card-link-arrow">→</span></a>
-                    <a class="card-link" tabindex="-1" href="project-student-support-admin-dashboard.html"><span>View Case Study</span><span class="card-link-arrow">→</span></a>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-<article class="project-card" aria-hidden="true">
-              <div class="card-color" style="background:#ede5db;">
-                <img src="img-2600design-desktop.png" alt="2600 Design">
-                <span class="card-cat">Web Design · Branding</span>
-              </div>
-              <div class="card-body">
-                <p class="card-title">2600 Design</p>
-                <p class="card-desc">Studio website for a Canberra web design brand with a refined, boutique aesthetic.</p>
-                <div class="card-footer">
-                  <div class="card-tags"><span class="tag-dark">Web Design</span><span class="tag-light">Branding</span></div>
-                  <div class="card-footer-links">
-                    <a class="card-link" tabindex="-1" href="https://www.2600design.com.au" target="_blank" rel="noopener noreferrer"><span>View Live</span><span class="card-link-arrow">→</span></a>
-                    <a class="card-link" tabindex="-1" href="project-2600-design.html"><span>View Case Study</span><span class="card-link-arrow">→</span></a>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-<a class="project-card" aria-hidden="true" tabindex="-1" href="project-cloudy-clothing.html">
-              <div class="card-color" style="background:#e8ecef;">
-                <img src="cloudyclothing.webp" alt="Cloudy Clothing">
-                <span class="card-cat">WordPress · Ecommerce</span>
-              </div>
-              <div class="card-body">
-                <p class="card-title">Cloudy Clothing</p>
-                <p class="card-desc">Custom fashion ecommerce store with a soft, minimal shopping experience.</p>
-                <div class="card-footer">
-                  <div class="card-tags"><span class="tag-dark">WordPress</span><span class="tag-light">WooCommerce</span></div>
-                  <span class="card-link">View Case Study →</span>
-                </div>
-              </div>
-            </a>
-
-<article class="project-card" aria-hidden="true">
-              <div class="card-color" style="background:#dde4dc;">
-                <img src="shopify-hero.png" alt="Green Bloom Matcha Shopify homepage">
-                <span class="card-cat">Shopify · Ecommerce</span>
-              </div>
-              <div class="card-body">
-                <p class="card-title">Green Bloom Matcha</p>
-                <p class="card-desc">Shopify-focused ecommerce concept built to show soft visual merchandising, mobile-first browsing, and premium brand presentation.</p>
-                <div class="card-footer">
-                  <div class="card-tags"><span class="tag-dark">Shopify</span><span class="tag-light">Ecommerce UX</span></div>
-                  <div class="card-footer-links">
-                    <a class="card-link" tabindex="-1" href="https://www.2600design.com.au/shopify-websites.html" target="_blank" rel="noopener noreferrer"><span>View Live</span><span class="card-link-arrow">→</span></a>
-                    <a class="card-link" tabindex="-1" href="project-shopify-store.html"><span>View Case Study</span><span class="card-link-arrow">→</span></a>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-<article class="project-card" aria-hidden="true">
-              <div class="card-color" style="background:#dde7ef;">
-                <img src="student-support-portal.png" alt="Student Support Service Portal">
-                <span class="card-cat">Service Portal · React</span>
-              </div>
-              <div class="card-body">
-                <p class="card-title">Student Support Service Portal</p>
-                <p class="card-desc">Accessible student support portal designed to show public-sector information architecture, service clarity, and realistic user journeys.</p>
-                <div class="card-footer">
-                  <div class="card-tags"><span class="tag-dark">React</span><span class="tag-light">Accessibility</span></div>
-                  <div class="card-footer-links">
-                    <a class="card-link" tabindex="-1" href="https://florash.github.io/Student-Support-Service-Portal/" target="_blank" rel="noopener noreferrer"><span>View Live</span><span class="card-link-arrow">→</span></a>
-                    <a class="card-link" tabindex="-1" href="project-student-support-service-portal.html"><span>View Case Study</span><span class="card-link-arrow">→</span></a>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-<a class="project-card" aria-hidden="true" tabindex="-1" href="https://florash.github.io/rainyhour/" target="_blank">
-              <div class="card-color" style="background:#d8e2e8;">
-                <img src="img-rainyhour-desktop.png" alt="Rainy Hour">
-                <span class="card-cat">Creative Dev</span>
-              </div>
-              <div class="card-body">
-                <p class="card-title">Rainy Hour</p>
-                <p class="card-desc">Ambient soundscape app with layered rain visuals, audio controls, and a calm interactive mood.</p>
-                <div class="card-footer">
-                  <div class="card-tags"><span class="tag-dark">JavaScript</span><span class="tag-light">Canvas API</span></div>
-                  <span class="card-link">View Live →</span>
-                </div>
-              </div>
-            </a>
-
-<a class="project-card" aria-hidden="true" tabindex="-1" href="https://florash.github.io/adopt-dont-shop/" target="_blank">
-              <div class="card-color" style="background:#efe6dc;">
-                <img src="adpot dont shop.png" alt="Adopt Don't Shop campaign artwork">
-                <span class="card-cat">Graphic Design · Campaign</span>
-              </div>
-              <div class="card-body">
-                <p class="card-title">Adopt Don't Shop</p>
-                <p class="card-desc">Graphic design campaign concept for pet adoption, combining soft editorial layout, visual storytelling, and social-first messaging.</p>
-                <div class="card-footer">
-                  <div class="card-tags"><span class="tag-dark">Graphic Design</span><span class="tag-light">Social Impact</span></div>
-                  <span class="card-link">View Live →</span>
-                </div>
-              </div>
-            </a>
-
-<a class="project-card" aria-hidden="true" tabindex="-1" href="giannisitalian_audit_v8.pdf" target="_blank">
-              <div class="card-color" style="background:#f0ece4;">
-                <img src="giannisitalian_card_v3.png" alt="SEO and Website Performance Audit">
-                <span class="card-cat">SEO · Web Audit</span>
-              </div>
-              <div class="card-body">
-                <p class="card-title">SEO &amp; Website Performance Audit</p>
-                <p class="card-desc">Technical SEO and performance audit project focused on visibility, speed, and site health.</p>
-                <div class="card-footer">
-                  <div class="card-tags"><span class="tag-dark">SEO</span><span class="tag-light">Web Audit</span></div>
-                  <span class="card-link">View Report ↗</span>
-                </div>
-              </div>
-            </a>
-
-<a class="project-card" aria-hidden="true" tabindex="-1" href="https://stockwise-pi.vercel.app" target="_blank">
-              <div class="card-color" style="background:#dde4dc;">
-                <img src="img-stockwise-desktop.png" alt="Stockwise">
-                <span class="card-cat">React · FastAPI</span>
-              </div>
-              <div class="card-body">
-                <p class="card-title">Stockwise</p>
-                <p class="card-desc">Stock analysis platform with AI-powered insights, live market data, and bilingual support.</p>
-                <div class="card-footer">
-                  <div class="card-tags"><span class="tag-dark">React</span><span class="tag-dark">FastAPI</span></div>
-                  <span class="card-link">View Live →</span>
-                </div>
-              </div>
-            </a>
-
-<a class="project-card" aria-hidden="true" tabindex="-1" href="https://florash.github.io/i-love-wallpaper/" target="_blank">
-              <div class="card-color" style="background:#e8e0ec;">
-                <img src="img-wallpaper-desktop.png" alt="I Love Wallpaper">
-                <span class="card-cat">UI Design · Mobile</span>
-              </div>
-              <div class="card-body">
-                <p class="card-title">I Love Wallpaper</p>
-                <p class="card-desc">Mobile wallpaper gallery concept with category browsing and a simple visual interface.</p>
-                <div class="card-footer">
-                  <div class="card-tags"><span class="tag-dark">UI Design</span><span class="tag-light">Mobile</span></div>
-                  <span class="card-link">View Live →</span>
-                </div>
-              </div>
-            </a>
-            <article class="project-card" aria-hidden="true"><div class="card-color"><div class="project-cover cover-ptescore"><div class="project-cover-mark"><strong>PTEscore</strong><span>Practise · Measure · Improve</span></div></div><span class="card-cat">EdTech · AI Learning</span></div><div class="card-body"><p class="card-title">PTEscore</p><p class="card-desc">A focused PTE preparation platform that turns practice into measurable progress through realistic tasks, scoring insights, and a clear learning flow.</p><div class="card-footer"><div class="card-tags"><span class="tag-dark">EdTech</span><span class="tag-light">Product Design</span></div><span class="card-link">2026 Project</span></div></div></article>
-            <article class="project-card" aria-hidden="true"><div class="card-color"><div class="project-cover cover-ieltsync"><div class="project-cover-mark"><strong>IELTSync</strong><span>Learn in your rhythm</span></div></div><span class="card-cat">EdTech · Study Platform</span></div><div class="card-body"><p class="card-title">IELTSync</p><p class="card-desc">An IELTS learning experience designed to keep practice, feedback, and progress in sync across the four core language skills.</p><div class="card-footer"><div class="card-tags"><span class="tag-dark">Learning UX</span><span class="tag-light">Web App</span></div><span class="card-link">2026 Project</span></div></div></article>
-            <article class="project-card" aria-hidden="true"><div class="card-color"><div class="project-cover cover-truepathway"><div class="project-cover-mark"><strong>TruePathway</strong><span>Clarity for what comes next</span></div></div><span class="card-cat">Education · Pathway Planning</span></div><div class="card-body"><p class="card-title">TruePathway</p><p class="card-desc">A guidance-led digital product that helps people explore study pathways, understand their options, and move forward with greater confidence.</p><div class="card-footer"><div class="card-tags"><span class="tag-dark">UX Strategy</span><span class="tag-light">Information Design</span></div><span class="card-link">2026 Project</span></div></div></article>
-            <article class="project-card" aria-hidden="true"><div class="card-color"><div class="project-cover cover-framedreaming"><div class="project-cover-mark"><strong>FrameDreaming</strong><span>Ideas into moving stories</span></div></div><span class="card-cat">Creative AI · Visual Storytelling</span></div><div class="card-body"><p class="card-title">FrameDreaming</p><p class="card-desc">A creative image-to-video experience built around visual storytelling, making it simple to shape still ideas into expressive moving frames.</p><div class="card-footer"><div class="card-tags"><span class="tag-dark">Creative AI</span><span class="tag-light">Image to Video</span></div><span class="card-link">2026 Project</span></div></div></article>
-      </div>
-    </div>
+    <!-- Website project cards now live in the liquid project ring. -->
   </div>
 </section>
 
-<script>
-(function () {
-  const grid = document.getElementById('featuredProductsGrid');
-  const carousel = document.getElementById('featuredProductsCarousel');
-  if (!grid || !carousel) return;
-  ['project-ptescore.html','project-ieltsync.html','project-truepathway.html','project-framedreaming.html'].forEach(function (href) {
-    const card = document.querySelector('#projects .projects-track > .project-card[data-product-card="' + href + '"]');
-    if (card) grid.appendChild(card);
-  });
-
-  Array.from(grid.children).forEach(function (card) {
-    const clone = card.cloneNode(true);
-    clone.setAttribute('aria-hidden', 'true');
-    clone.querySelectorAll('a').forEach(function (link) { link.setAttribute('tabindex', '-1'); });
-    grid.appendChild(clone);
-  });
-
-  let paused = false;
-  let dragging = false;
-  let pointerDown = false;
-  let startX = 0;
-  let startScroll = 0;
-  let resumeTimer;
-  let lastTime = performance.now();
-
-  function loopWidth() { return grid.scrollWidth / 2; }
-  function keepSeamless() {
-    const width = loopWidth();
-    if (!width) return;
-    if (carousel.scrollLeft >= width) carousel.scrollLeft -= width;
-    if (carousel.scrollLeft <= 0) carousel.scrollLeft = width - 1;
-  }
-  function pauseFor(delay) {
-    paused = true;
-    clearTimeout(resumeTimer);
-    resumeTimer = setTimeout(function () { paused = false; }, delay || 1400);
-  }
-
-  const prevButton = document.querySelector('[data-featured-prev]');
-  const nextButton = document.querySelector('[data-featured-next]');
-  function scrollFeatured(direction) {
-    pauseFor(1100);
-    carousel.scrollBy({ left: direction * 540, behavior: 'smooth' });
-  }
-  if (prevButton) prevButton.addEventListener('click', function () { scrollFeatured(-1); });
-  if (nextButton) nextButton.addEventListener('click', function () { scrollFeatured(1); });
-
-  carousel.addEventListener('pointerdown', function (event) {
-    if (event.pointerType === 'mouse' && event.button !== 0) return;
-    pointerDown = true; dragging = false; paused = true;
-    clearTimeout(resumeTimer); startX = event.clientX; startScroll = carousel.scrollLeft;
-  });
-  carousel.addEventListener('pointermove', function (event) {
-    if (!pointerDown) return;
-    if (!dragging && Math.abs(event.clientX - startX) > 6) {
-      dragging = true; carousel.classList.add('is-dragging'); carousel.setPointerCapture(event.pointerId);
-    }
-    if (!dragging) return;
-    carousel.scrollLeft = startScroll - (event.clientX - startX) * 1.3;
-    keepSeamless();
-  });
-  function finish(event) {
-    pointerDown = false; dragging = false; carousel.classList.remove('is-dragging');
-    if (event && carousel.hasPointerCapture(event.pointerId)) carousel.releasePointerCapture(event.pointerId);
-    pauseFor(1400);
-  }
-  carousel.addEventListener('pointerup', finish);
-  carousel.addEventListener('pointercancel', finish);
-  carousel.addEventListener('wheel', function (event) {
-    event.preventDefault();
-    carousel.scrollLeft += Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
-    keepSeamless();
-    pauseFor(900);
-  }, { passive: false });
-  carousel.addEventListener('scroll', keepSeamless, { passive: true });
-
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    (function autoScroll(now) {
-      const elapsed = Math.min(40, now - lastTime); lastTime = now;
-      if (!paused && !dragging) { carousel.scrollLeft += elapsed * .04; keepSeamless(); }
-      requestAnimationFrame(autoScroll);
-    })(performance.now());
-  }
-})();
-</script>
+<script src="liquid-card-ring-shader.js?v=20260902-links1"></script>
+<script src="liquid-card-ring.js?v=20260902-links2"></script>
 
 <div class="h-rule"></div>
 
@@ -2211,8 +1793,8 @@ renderHeroNote('about');
           <div class="contact-3d-caption-head">
             <div><p class="framedreaming-kicker">AI 3D Exploration · Model Reel</p><h3>AI 3D Model Collection.</h3></div>
             <div class="ai-3d-metrics" aria-label="Sketchfab performance">
-              <div class="ai-3d-metric"><strong>8.3K+</strong><span>Views</span></div>
-              <div class="ai-3d-metric"><strong>1.3K+</strong><span>Downloads</span></div>
+              <div class="ai-3d-metric"><strong>20,967</strong><span>Views</span></div>
+              <div class="ai-3d-metric"><strong>3,301</strong><span>Downloads</span></div>
             </div>
           </div>
           <p class="contact-3d-caption-copy">A curated series spanning characters, decorative objects and product studies. I led the concepts, AI generation, selection, visual direction and motion presentation.</p>
@@ -2233,6 +1815,9 @@ renderHeroNote('about');
           </a>
           <a href="https://github.com/florash" target="_blank" rel="noopener noreferrer" class="contact-link">
             <span class="cl-lbl">GitHub</span><span class="cl-val">github.com/florash →</span>
+          </a>
+          <a href="https://www.tiktok.com/@framedreaming" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <span class="cl-lbl">TikTok</span><span class="cl-val">@framedreaming →</span>
           </a>
         </div>
       </aside>

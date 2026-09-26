@@ -1,0 +1,323 @@
+#projects { scroll-margin-top: 76px; }
+
+.liquid-ring-section {
+  position: relative;
+  margin: 72px 0 92px;
+  padding: 1px;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(251,227,238,.82), transparent 28%),
+    radial-gradient(circle at 88% 86%, rgba(214,239,246,.88), transparent 34%),
+    linear-gradient(145deg, #fbf8fb 0%, #f1f7f9 100%);
+  border: 1px solid rgba(206,226,235,.72);
+  border-radius: 32px;
+  box-shadow: 0 26px 76px rgba(82,71,105,.11), inset 0 1px 0 rgba(255,255,255,.95);
+  isolation: isolate;
+}
+
+.liquid-ring-section::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 52% 12%, rgba(255,255,255,.92), transparent 46%),
+    radial-gradient(circle at 78% 56%, rgba(255,255,255,.38), transparent 32%),
+    linear-gradient(120deg, rgba(255,255,255,.44), transparent 42%);
+  z-index: -1;
+}
+
+.liquid-ring-heading {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 34px 34px 0;
+}
+
+.liquid-ring-heading > div:first-child { position: relative; }
+
+.liquid-ring-heading > div:first-child::after {
+  content: "";
+  display: block;
+  width: 76px;
+  height: 3px;
+  margin-top: 18px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #efb6cf, #a6dce8);
+  box-shadow: 0 5px 14px rgba(180,145,174,.18);
+}
+
+.liquid-ring-kicker,
+.liquid-ring-help,
+.liquid-ring-counter,
+.liquid-ring-meta,
+.liquid-ring-replay {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+
+.liquid-ring-kicker {
+  margin: 0 0 10px;
+  color: rgba(78,111,126,.7);
+  font-size: 10px;
+}
+
+.liquid-ring-help {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 9px;
+  padding: 11px 14px 12px;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255,255,255,.64), rgba(255,255,255,.26));
+  box-shadow: 0 10px 28px rgba(92,125,142,.08), inset 0 1px 0 rgba(255,255,255,.86);
+  -webkit-backdrop-filter: blur(16px) saturate(135%);
+  backdrop-filter: blur(16px) saturate(135%);
+  color: rgba(80,75,88,.66);
+  font-size: 9px;
+  text-align: right;
+}
+
+.liquid-ring-replay {
+  padding: 0 0 3px;
+  border: 0;
+  border-bottom: 1px solid rgba(80,75,88,.5);
+  color: #504b58;
+  background: transparent;
+  cursor: pointer;
+  font-size: 9px;
+}
+
+.liquid-ring-replay:hover,
+.liquid-ring-replay:focus-visible {
+  color: #e0218a;
+  border-color: #e0218a;
+  outline: none;
+}
+
+.liquid-ring-stage {
+  position: relative;
+  height: min(800px, 72vw);
+  min-height: 680px;
+  margin-top: -10px;
+  overflow: hidden;
+  border-radius: 0 0 27px 27px;
+  background:
+    radial-gradient(ellipse at 20% 35%, rgba(251,227,238,.54), transparent 31%),
+    radial-gradient(ellipse at 68% 72%, rgba(214,239,246,.7), transparent 38%),
+    linear-gradient(140deg, rgba(246,251,253,.88), rgba(255,250,253,.74));
+  box-shadow: inset 0 28px 52px rgba(255,255,255,.42), inset 0 -24px 52px rgba(193,222,232,.14);
+  cursor: grab;
+  touch-action: none;
+  isolation: isolate;
+}
+
+.liquid-ring-stage.is-dragging { cursor: grabbing; }
+
+.liquid-ring-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 28% 16%, rgba(255,255,255,.9), transparent 20%),
+    radial-gradient(circle at 78% 28%, rgba(239,182,207,.18), transparent 24%),
+    radial-gradient(circle at 12% 82%, rgba(166,220,232,.22), transparent 28%);
+}
+
+.liquid-ring-stage canvas {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  z-index: 1;
+}
+
+.liquid-ring-info {
+  position: absolute;
+  top: 7%;
+  right: 34px;
+  z-index: 2;
+  width: min(258px, 26vw);
+  padding: 11px 14px 12px;
+  border-right: 2px solid rgba(239,182,207,.72);
+  border-radius: 16px;
+  background: linear-gradient(90deg, rgba(255,255,255,.08), rgba(255,255,255,.56));
+  box-shadow: 0 10px 26px rgba(92,125,142,.06), inset 0 1px 0 rgba(255,255,255,.64);
+  -webkit-backdrop-filter: blur(12px) saturate(125%);
+  backdrop-filter: blur(12px) saturate(125%);
+  pointer-events: none;
+  color: #312b38;
+  text-align: right;
+}
+
+.liquid-ring-counter,
+.liquid-ring-meta {
+  display: block;
+  color: rgba(78,111,126,.66);
+  font-size: 9px;
+  line-height: 1.65;
+}
+
+.liquid-ring-current {
+  display: block;
+  margin: 8px 0 6px;
+  color: #2e2836;
+  font-size: clamp(20px, 2vw, 29px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -.04em;
+}
+
+.liquid-ring-project-list {
+  position: absolute;
+  top: 27%;
+  right: 30px;
+  z-index: 3;
+  width: min(264px, 27vw);
+  padding: 15px 10px 12px;
+  border: 1px solid rgba(255,255,255,.82);
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(255,255,255,.68), rgba(246,251,253,.36));
+  box-shadow: 0 18px 42px rgba(82,111,128,.12), inset 0 1px 0 rgba(255,255,255,.9);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+  pointer-events: auto;
+}
+
+.liquid-ring-project-list-label {
+  display: block;
+  padding: 0 8px;
+  color: rgba(78,111,126,.78);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 9px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.liquid-ring-project-list ol {
+  max-height: 430px;
+  margin: 11px 0 0;
+  padding: 0 2px 0 0;
+  overflow-y: auto;
+  list-style: none;
+  scrollbar-color: rgba(143,186,211,.55) transparent;
+  scrollbar-width: thin;
+}
+
+.liquid-ring-project {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 8px;
+  width: 100%;
+  min-height: 25px;
+  padding: 6px 8px;
+  border: 0;
+  border-radius: 10px;
+  background: rgba(255,255,255,.08);
+  color: rgba(63,78,88,.82);
+  font: 9px/1.25 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  letter-spacing: .04em;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color .2s ease, background .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+.liquid-ring-project-number {
+  color: rgba(78,111,126,.58);
+  letter-spacing: .08em;
+}
+
+.liquid-ring-project-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.liquid-ring-project:hover,
+.liquid-ring-project:focus-visible {
+  background: rgba(255,255,255,.62);
+  color: #4f899f;
+  box-shadow: inset 3px 0 rgba(166,220,232,.95), 0 5px 16px rgba(92,125,142,.07);
+  transform: translateX(-2px);
+  outline: none;
+}
+
+.liquid-ring-project.is-active {
+  background: linear-gradient(90deg, rgba(251,227,238,.9), rgba(214,239,246,.54));
+  color: #326c82;
+  box-shadow: inset 3px 0 #e0218a, 0 7px 18px rgba(220,145,180,.12);
+  transform: translateX(-2px);
+}
+
+.liquid-ring-project.is-active .liquid-ring-project-number {
+  color: #e0218a;
+}
+
+.liquid-ring-project:focus-visible {
+  outline: 2px solid rgba(239,182,207,.95);
+  outline-offset: 2px;
+}
+
+.liquid-ring-caption {
+  position: absolute;
+  left: 34px;
+  bottom: 26px;
+  z-index: 2;
+  pointer-events: none;
+  padding: 9px 12px 9px 10px;
+  border-left: 2px solid rgba(166,220,232,.74);
+  border-radius: 0 12px 12px 0;
+  background: rgba(255,255,255,.2);
+  box-shadow: 0 8px 22px rgba(82,111,128,.05);
+  color: rgba(78,111,126,.62);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 9px;
+  line-height: 1.7;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.liquid-ring-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 820px) {
+  .liquid-ring-section { margin: 54px 0 72px; border-radius: 24px; }
+  .liquid-ring-heading { align-items: flex-start; flex-direction: column; padding: 28px 22px 0; gap: 18px; }
+  .liquid-ring-help { align-items: flex-start; text-align: left; }
+  .liquid-ring-stage { height: 660px; min-height: 660px; border-radius: 0 0 23px 23px; }
+  .liquid-ring-info { top: 8%; right: 22px; bottom: auto; width: min(214px, 38vw); }
+  .liquid-ring-project-list { top: 29%; right: 22px; left: auto; width: min(220px, 40vw); padding: 13px 8px 10px; }
+  .liquid-ring-project-list ol { display: block; max-height: 350px; }
+  .liquid-ring-project { min-height: 25px; padding: 6px 6px; font-size: 9px; }
+  .liquid-ring-caption { left: 22px; bottom: 28px; max-width: 180px; }
+}
+
+@media (max-width: 520px) {
+  .liquid-ring-stage { height: 560px; min-height: 560px; }
+  .liquid-ring-info { top: 7%; width: min(190px, 44vw); padding: 9px 11px 10px; }
+  .liquid-ring-project-list { top: 28%; right: 18px; width: min(204px, 50vw); }
+  .liquid-ring-project-list ol { max-height: 330px; }
+  .liquid-ring-project { min-height: 23px; padding: 5px 5px; font-size: 8px; }
+  .liquid-ring-current { font-size: 20px; }
+  .liquid-ring-caption { font-size: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liquid-ring-stage { cursor: default; }
+}
